@@ -74,18 +74,47 @@
                 </div>
 
                 <p class="modal-description"><?= htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'control-empresas', 'inpro-gestion'], true)): ?>
+                    <p class="modal-subtitle"><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
 
-                <div class="modal-tags">
-                    <?php foreach ($project['tags'] as $tag): ?>
-                        <span><?= htmlspecialchars($tag, ENT_QUOTES, 'UTF-8'); ?></span>
-                    <?php endforeach; ?>
-                </div>
+                    <div class="modal-stats">
+                        <?php foreach (($project['stats'] ?? []) as $stat): ?>
+                            <div class="modal-stat">
+                                <div class="modal-stat__icon">
+                                    <i class="<?= htmlspecialchars($stat['icon'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></i>
+                                </div>
+                                <div class="modal-stat__value"><?= htmlspecialchars($stat['value'] ?? '', ENT_QUOTES, 'UTF-8'); ?></div>
+                                <div class="modal-stat__label"><?= htmlspecialchars($stat['label'] ?? '', ENT_QUOTES, 'UTF-8'); ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
 
-                <ul class="modal-list">
-                    <?php foreach ($project['highlights'] as $item): ?>
-                        <li><i class="bi bi-check2-circle"></i> <?= htmlspecialchars($item, ENT_QUOTES, 'UTF-8'); ?></li>
-                    <?php endforeach; ?>
-                </ul>
+                    <h4 class="modal-section-title">Características Principales</h4>
+
+                    <div class="modal-features">
+                        <?php foreach (($project['features'] ?? []) as $feature): ?>
+                            <article class="modal-feature">
+                                <div class="modal-feature__icon">
+                                    <i class="<?= htmlspecialchars($feature['icon'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></i>
+                                </div>
+                                <h5><?= htmlspecialchars($feature['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h5>
+                                <p><?= htmlspecialchars($feature['text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+                            </article>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <div class="modal-tags">
+                        <?php foreach ($project['tags'] as $tag): ?>
+                            <span><?= htmlspecialchars($tag, ENT_QUOTES, 'UTF-8'); ?></span>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <ul class="modal-list">
+                        <?php foreach ($project['highlights'] as $item): ?>
+                            <li><i class="bi bi-check2-circle"></i> <?= htmlspecialchars($item, ENT_QUOTES, 'UTF-8'); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
         </section>
     <?php endforeach; ?>

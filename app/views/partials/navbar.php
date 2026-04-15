@@ -8,7 +8,6 @@
                     class="brand-logo"
                 >
             </span>
-            <span class="brand-text">INPRO</span>
         </a>
 
         <button class="menu-toggle" type="button" aria-label="Abrir menu">Menu</button>
