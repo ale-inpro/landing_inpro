@@ -27,7 +27,6 @@
                             alt="Logo <?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?>"
                             loading="lazy"
                         />
-                        <span class="project-chip">Proyecto</span>
                     </div>
 
                     <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
