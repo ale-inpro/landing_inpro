@@ -221,16 +221,42 @@ body {
 .project-icon--chart { box-shadow: 0 0 12px rgba(53, 182, 255, 0.32); }
 
 .card-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     margin-top: 0.7rem;
-    padding: 0.52rem 0.84rem;
-    border-radius: 8px;
-    border: 1px solid rgba(53, 182, 255, 0.5);
-    background: linear-gradient(120deg, rgba(53, 182, 255, 0.16), rgba(77, 255, 180, 0.1));
-    color: #dff3ff;
-    text-decoration: none;
-    font-weight: 600;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--green);
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgba(77, 255, 180, 0.65);
+    text-underline-offset: 4px;
+}
+
+.card-link:focus-visible {
+    outline: 2px solid rgba(77, 255, 180, 0.65);
+    outline-offset: 4px;
+}
+
+.card-link__arrow {
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.project-card:hover .card-link__arrow,
+.card-link:hover .card-link__arrow {
+    transform: translateX(4px);
 }
 
 .section {
@@ -805,16 +831,19 @@ body {
 .project-icon--chart { box-shadow: 0 0 12px rgba(53, 182, 255, 0.32); }
 
 .card-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     margin-top: 0.7rem;
-    padding: 0.52rem 0.84rem;
-    border-radius: 8px;
-    border: 1px solid rgba(53, 182, 255, 0.5);
-    background: linear-gradient(120deg, rgba(53, 182, 255, 0.16), rgba(77, 255, 180, 0.1));
-    color: #dff3ff;
-    text-decoration: none;
-    font-weight: 600;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--green);
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .section-dark {
