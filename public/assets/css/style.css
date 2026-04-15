@@ -87,12 +87,15 @@ body {
     border: 0;
     border-radius: 0;
     box-shadow: none;
+    overflow: visible;
 }
 
 .brand-logo {
-    width: 67px;
-    height: 67px;
+    width: 59px;
+    height: 59px;
     object-fit: contain;
+    transform: scale(1.7);
+    transform-origin: center;
 }
 
 .brand-text {

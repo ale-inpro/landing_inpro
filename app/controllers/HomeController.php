@@ -138,7 +138,7 @@ final class HomeController
             [
                 'id' => 'control-empresas',
                 'name' => 'Control de Empresas',
-                'logo' => '/assets/img/logo_inpro.png',
+                'logo' => '/assets/img/logo-reajustado.webp',
                 'tagline' => 'La solución que amplía, conecta y moderniza el software con el que trabaja tu empresa.',
                 'description' => 'Conjunto de herramientas para supervisar indicadores clave, integraciones y operaciones transversales de manera unificada.',
                 'stats' => [
