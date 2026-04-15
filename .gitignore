@@ -1,0 +1,6 @@
+/vendor/
+/.env
+/storage/logs/*.log
+/.idea/
+/.vscode/
+Thumbs.db

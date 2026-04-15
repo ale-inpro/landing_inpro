@@ -1,0 +1,11 @@
+{
+  "name": "inpro/landing",
+  "description": "Landing page base for InPro (PHP MVC simple)",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "require": {}
+}

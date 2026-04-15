@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/index.css">
+
+    <link rel="stylesheet" href="CSS/header.css">
+</head>
+<body>
+    <div id="header"></div>
+
+
+
+    <main class="hero-section">
+    
+    <div id="card-inicio" class="content-card">
+        <h2 class="glow-title">Inicio</h2>
+        <p>Bienvenido a INPRO. Desarrollando el futuro digital con soluciones tecnológicas inteligentes.</p>
+    </div>
+
+    <div id="card-productos" class="content-card">
+        <h2 class="glow-title">Nuestros Productos</h2>
+        <p class="productos-intro">Descubre nuestras soluciones informáticas y sistemas de gestión.</p>
+
+        <div class="productos-grid">
+
+            <a href="vigia.html" class="producto-item producto-link">
+                <div class="producto-icon"><i class='bx bx-shield-quarter'></i></div>
+                <h3>Vigía</h3>
+                <p>Optimiza tus operaciones: detección automática de anomalías, resolución ágil de problemas y generación instantánea de informes de obra.</p>
+                <span class="producto-ver">Ver más <i class='bx bx-right-arrow-alt'></i></span>
+            </a>
+
+            <a href="inpro-gestion.html" class="producto-item producto-link">
+                <div class="producto-icon"><i class='bx bx-buildings'></i></div>
+                <h3>INPRO Gestión</h3>
+                <p>La plataforma integral para la gestión eficiente y transparente de tus comunidades.</p>
+                <span class="producto-ver">Ver más <i class='bx bx-right-arrow-alt'></i></span>
+            </a>
+
+            <a href="actalia.html" class="producto-item producto-link">
+                <div class="producto-icon"><i class='bx bx-leaf'></i></div>
+                <h3>Actalia</h3>
+                <p>Automatiza tus actas y documentos en segundos con Inteligencia Artificial.</p>
+                <span class="producto-ver">Ver más <i class='bx bx-right-arrow-alt'></i></span>
+            </a>
+
+            <a href="control-empresas.html" class="producto-item producto-link">
+                <div class="producto-icon"><i class='bx bx-bar-chart-alt-2'></i></div>
+                <h3>Control de Empresas</h3>
+                <p>El ecosistema tecnológico a medida para el control total de tu empresa.</p>
+                <span class="producto-ver">Ver más <i class='bx bx-right-arrow-alt'></i></span>
+            </a>
+
+        </div>
+    </div>
+
+    <div id="card-esencia" class="content-card">
+        <h2 class="glow-title">Nuestra Esencia</h2>
+        <p>Conoce nuestra historia, misión y los valores que nos impulsan cada día.</p>
+        <a href="nuestra-esencia.html" class="btn-esencia">Ver más <i class='bx bx-right-arrow-alt'></i></a>
+    </div>
+
+    <div id="card-contacto" class="content-card form-card">
+        <h2 class="glow-title">Formulario de Contacto</h2>
+        <div id="msg-enviado" class="msg-enviado" style="display:none;">
+            ✅ Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.
+        </div>
+        <form class="contact-form" action="procesar-contacto.php" method="POST">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu Correo" required>
+            <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" rows="4" required></textarea>
+            <button type="submit" class="btn-submit">Enviar Mensaje</button>
+        </form>
+    </div>
+
+</main>
+
+
+
+
+    <div id="footer"></div>
+
+    <script src="JS/partials.js"></script>
+    <script>
+        // Mostrar mensaje de éxito si venimos de procesar el formulario
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('enviado') === '1') {
+            document.addEventListener('DOMContentLoaded', function() {
+                const card = document.getElementById('card-contacto');
+                const msg = document.getElementById('msg-enviado');
+                if (card) card.classList.add('active');
+                if (msg) msg.style.display = 'block';
+                // Limpia el parámetro de la URL para que no vuelva a mostrarse
+                history.replaceState(null, '', window.location.pathname);
+            });
+        }
+    </script>
+</body>
+</html>

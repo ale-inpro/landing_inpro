@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --accent: #4ec3ff;
+    --accent-dark: #1a8fc7;
+    --text: #f5f7fa;
+    --muted: #a0aec0;
+    --card-bg: rgba(10, 18, 32, 0.62);
+    --border: rgba(78, 195, 255, 0.18);
+}
+
+html, body {
+    height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: #060e1e;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#header, #footer {
+    width: 100%;
+}
+
+.actalia-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background:
+        linear-gradient(rgba(6, 14, 30, 0.25), rgba(6, 14, 30, 0.45)),
+        url("../img/inpro.png") center 15% / cover no-repeat fixed;
+}
+
+/* Hero */
+.actalia-hero {
+    width: 100%;
+    padding: 5rem 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.actalia-hero-inner {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.actalia-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(78, 195, 255, 0.4);
+    background: rgba(78, 195, 255, 0.08);
+}
+
+.actalia-title {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(78, 195, 255, 0.4);
+}
+
+.actalia-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.actalia-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 580px;
+}
+
+/* Stats */
+.actalia-stats {
+    width: 100%;
+    max-width: 860px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    padding: 3rem 2rem;
+}
+
+.stat-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    transition: border-color 0.2s ease;
+}
+
+.stat-item:hover {
+    border-color: rgba(78, 195, 255, 0.5);
+}
+
+.stat-icon {
+    font-size: 1.8rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* Características */
+.actalia-features {
+    width: 100%;
+    max-width: 960px;
+    padding: 1rem 2rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.actalia-section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(78, 195, 255, 0.3);
+}
+
+.features-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem 1.4rem;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+    background: rgba(78, 195, 255, 0.08);
+    border-color: rgba(78, 195, 255, 0.4);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.feature-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.feature-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* CTA */
+.actalia-cta {
+    padding: 1rem 2rem 4rem;
+}
+
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #041222;
+    background: linear-gradient(90deg, #71d2ff, #4ec3ff);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(78, 195, 255, 0.35);
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(78, 195, 255, 0.55);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .actalia-stats {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actalia-hero {
+        padding: 3.5rem 1rem 3rem;
+    }
+}
