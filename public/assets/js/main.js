@@ -8,6 +8,9 @@ const contactFeedback = document.getElementById('contact-feedback');
 const openButtons = document.querySelectorAll('.js-open-project');
 const modals = document.querySelectorAll('.project-modal');
 const closeModalButtons = document.querySelectorAll('.js-close-modal');
+const revealItems = document.querySelectorAll('.reveal');
+const modalsWrapper = document.getElementById('project-modals');
+let lastFocusedElement = null;
 
 menuToggle?.addEventListener('click', () => {
     navMenu?.classList.toggle('open');
@@ -17,7 +20,7 @@ navLinks.forEach((link) => {
     link.addEventListener('click', () => navMenu?.classList.remove('open'));
 });
 
-const observer = new IntersectionObserver(
+const navObserver = new IntersectionObserver(
     (entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -31,11 +34,30 @@ const observer = new IntersectionObserver(
     { rootMargin: '-45% 0px -45% 0px' }
 );
 
-sections.forEach((section) => observer.observe(section));
+sections.forEach((section) => navObserver.observe(section));
+
+const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    },
+    { threshold: 0.15 }
+);
+
+revealItems.forEach((item) => revealObserver.observe(item));
 
 function closeAllModals() {
     modals.forEach((modal) => modal.classList.remove('is-open'));
     document.body.classList.remove('modal-open');
+    modalsWrapper?.setAttribute('aria-hidden', 'true');
+
+    if (lastFocusedElement instanceof HTMLElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+    }
 }
 
 openButtons.forEach((button) => {
@@ -44,9 +66,16 @@ openButtons.forEach((button) => {
         const targetModal = document.querySelector(`.project-modal[data-modal="${projectId}"]`);
         if (!targetModal) return;
 
-        closeAllModals();
+        lastFocusedElement = button;
+        modals.forEach((modal) => modal.classList.remove('is-open'));
         targetModal.classList.add('is-open');
         document.body.classList.add('modal-open');
+        modalsWrapper?.setAttribute('aria-hidden', 'false');
+
+        const panel = targetModal.querySelector('.project-modal__panel');
+        if (panel instanceof HTMLElement) {
+            panel.focus();
+        }
     });
 });
 

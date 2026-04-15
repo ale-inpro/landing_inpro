@@ -1,14 +1,21 @@
 :root {
-    --bg: #0e1111;
-    --bg-soft: #171c1c;
-    --text: #eff2f1;
-    --muted: #a2adab;
-    --green: #51f89a;
-    --green-soft: rgba(81, 248, 154, 0.2);
+    --bg-0: #070b14;
+    --bg-1: #0d1322;
+    --bg-2: #111a2d;
+    --bg-soft: #182138;
+
+    --text: #eef4ff;
+    --muted: #9fb3d1;
     --gray: #b7c0be;
-    --border: rgba(167, 185, 180, 0.25);
-    --blue: #45c7ff;
-    --blue-soft: rgba(69, 199, 255, 0.24);
+
+    --green: #4dffb4;
+    --green-soft: rgba(77, 255, 180, 0.18);
+
+    --blue: #35b6ff;
+    --blue-soft: rgba(53, 182, 255, 0.2);
+
+    --violet: #8a6bff;
+    --border: rgba(83, 151, 255, 0.35);
 }
 
 * {
@@ -23,7 +30,11 @@ html {
 
 body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: radial-gradient(circle at 16% 18%, #25302d 0%, #131817 38%, var(--bg) 72%);
+    background:
+        radial-gradient(circle at 12% 18%, rgba(53, 182, 255, 0.2), transparent 34%),
+        radial-gradient(circle at 82% 24%, rgba(77, 255, 180, 0.18), transparent 36%),
+        radial-gradient(circle at 52% 85%, rgba(138, 107, 255, 0.14), transparent 40%),
+        linear-gradient(160deg, var(--bg-0), var(--bg-1) 42%, var(--bg-2));
     color: var(--text);
     line-height: 1.5;
 }
@@ -98,24 +109,55 @@ body {
     align-items: center;
     padding-top: 88px;
     background:
-        linear-gradient(115deg, rgba(8, 10, 10, 0.84) 8%, rgba(13, 16, 15, 0.45) 46%, rgba(17, 20, 19, 0.38) 100%),
-        radial-gradient(circle at 78% 20%, rgba(81, 248, 154, 0.24), transparent 42%),
-        radial-gradient(circle at 26% 70%, rgba(69, 199, 255, 0.22), transparent 46%),
+        linear-gradient(115deg, rgba(8, 10, 10, 0.78) 8%, rgba(13, 16, 15, 0.42) 46%, rgba(17, 20, 19, 0.32) 100%),
+        radial-gradient(circle at 78% 20%, rgba(53, 182, 255, 0.26), transparent 40%),
+        radial-gradient(circle at 25% 76%, rgba(77, 255, 180, 0.2), transparent 38%),
         url("../img/img_hero.png") center/cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(53, 182, 255, 0.22), transparent 32%),
+        radial-gradient(circle at 20% 75%, rgba(77, 255, 180, 0.18), transparent 30%);
+    animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.7; filter: blur(2px); }
+    to { opacity: 1; filter: blur(7px); }
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(7, 10, 10, 0.08) 0%, rgba(7, 10, 10, 0.42) 100%),
+        linear-gradient(180deg, rgba(7, 10, 10, 0.06) 0%, rgba(7, 10, 10, 0.36) 100%),
         repeating-linear-gradient(
             90deg,
-            rgba(120, 138, 133, 0.08) 0,
-            rgba(120, 138, 133, 0.08) 1px,
+            rgba(141, 169, 217, 0.09) 0,
+            rgba(141, 169, 217, 0.09) 1px,
             transparent 1px,
-            transparent 90px
+            transparent 92px
         );
+}
+
+.hero-neon {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(53, 182, 255, 0.28), transparent 24%),
+        radial-gradient(circle at 18% 72%, rgba(77, 255, 180, 0.24), transparent 27%);
+    filter: blur(8px);
+    animation: neonPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    from { opacity: 0.68; }
+    to { opacity: 1; }
 }
 
 .hero-content {
@@ -143,19 +185,19 @@ body {
 }
 
 .project-card {
-    background: rgba(20, 26, 25, 0.62);
+    background: rgba(15, 22, 38, 0.62);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 1rem 1.1rem;
     backdrop-filter: blur(5px);
-    box-shadow: 0 0 0 transparent;
+    box-shadow: 0 10px 28px rgba(6, 12, 24, 0.5);
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .project-card:hover {
-    border-color: rgba(81, 248, 154, 0.45);
-    box-shadow: 0 0 24px rgba(81, 248, 154, 0.16);
-    transform: translateY(-2px);
+    border-color: rgba(53, 182, 255, 0.72);
+    box-shadow: 0 0 30px rgba(53, 182, 255, 0.24), 0 0 22px rgba(77, 255, 180, 0.15);
+    transform: translateY(-4px);
 }
 
 .project-card p {
@@ -163,12 +205,32 @@ body {
     font-size: 0.95rem;
 }
 
+.project-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background: linear-gradient(135deg, rgba(53, 182, 255, 0.24), rgba(77, 255, 180, 0.2));
+}
+
+.project-icon--shield { box-shadow: 0 0 12px rgba(53, 182, 255, 0.32); }
+.project-icon--building { box-shadow: 0 0 12px rgba(138, 107, 255, 0.32); }
+.project-icon--file { box-shadow: 0 0 12px rgba(77, 255, 180, 0.32); }
+.project-icon--chart { box-shadow: 0 0 12px rgba(53, 182, 255, 0.32); }
+
 .card-link {
     display: inline-block;
-    margin-top: 0.65rem;
-    color: var(--green);
+    margin-top: 0.7rem;
+    padding: 0.52rem 0.84rem;
+    border-radius: 8px;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background: linear-gradient(120deg, rgba(53, 182, 255, 0.16), rgba(77, 255, 180, 0.1));
+    color: #dff3ff;
     text-decoration: none;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .section {
@@ -176,9 +238,360 @@ body {
 }
 
 .section-dark {
-    background: linear-gradient(180deg, #0f1413, #0d1111);
-    border-top: 1px solid rgba(81, 248, 154, 0.08);
-    border-bottom: 1px solid rgba(81, 248, 154, 0.08);
+    background:
+        radial-gradient(circle at 80% 10%, rgba(53, 182, 255, 0.08), transparent 36%),
+        linear-gradient(180deg, #101730, #0d1327);
+    border-top: 1px solid rgba(53, 182, 255, 0.15);
+    border-bottom: 1px solid rgba(77, 255, 180, 0.12);
+}
+
+.section-head h2 {
+    margin: 0.45rem 0 1rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.lead {
+    color: var(--gray);
+    max-width: 75ch;
+}
+
+.service-grid {
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.service-grid article {
+    border: 1px solid rgba(83, 151, 255, 0.35);
+    border-radius: 12px;
+    padding: 1rem;
+    background: rgba(18, 27, 47, 0.62);
+    box-shadow: 0 8px 24px rgba(7, 13, 25, 0.35);
+}
+
+.service-grid article:hover {
+    border-color: rgba(77, 255, 180, 0.55);
+    box-shadow: 0 0 24px rgba(77, 255, 180, 0.16);
+}
+
+.service-grid p {
+    color: var(--muted);
+}
+
+.contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.contact-form label {
+    display: grid;
+    gap: 0.35rem;
+    color: var(--gray);
+}
+
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(14, 18, 18, 0.9);
+    color: var(--text);
+    padding: 0.75rem;
+    font: inherit;
+}
+
+.contact-form button {
+    border: 1px solid rgba(81, 248, 154, 0.55);
+    border-radius: 10px;
+    background: linear-gradient(120deg, rgba(81, 248, 154, 0.18), rgba(81, 248, 154, 0.05));
+    color: var(--text);
+    padding: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.contact-feedback {
+    min-height: 1rem;
+    font-size: 0.95rem;
+    color: var(--green);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: none;
+}
+
+.project-modal.is-open {
+    display: block;
+}
+
+.project-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 8, 20, 0.72);
+    backdrop-filter: blur(7px);
+}
+
+.project-modal__panel {
+    position: relative;
+    width: min(700px, 92%);
+    margin: 8vh auto 0;
+    padding: 1.3rem;
+    border-radius: 14px;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background:
+        linear-gradient(145deg, rgba(14, 23, 42, 0.96), rgba(11, 18, 34, 0.95)),
+        radial-gradient(circle at 92% 8%, rgba(53, 182, 255, 0.2), transparent 32%);
+    box-shadow: 0 0 35px rgba(53, 182, 255, 0.26), 0 0 20px rgba(77, 255, 180, 0.16);
+    animation: modalIn 0.25s ease;
+    outline: none;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.project-modal__panel h3 {
+    margin: 0.3rem 0 0.7rem;
+    font-size: 1.45rem;
+}
+
+.project-modal__panel p,
+.project-modal__panel li {
+    color: var(--muted);
+}
+
+.project-modal__panel ul {
+    margin: 0.8rem 0 0 1.2rem;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.project-modal__close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background: rgba(9, 16, 30, 0.95);
+    color: #dff3ff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.site-footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    background: #0a0d0d;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+}
+:root {
+    --bg-0: #070b14;
+    --bg-1: #0d1322;
+    --bg-2: #111a2d;
+    --bg-soft: #182138;
+
+    --text: #eef4ff;
+    --muted: #9fb3d1;
+    --gray: #b7c0be;
+
+    --green: #4dffb4;
+    --green-soft: rgba(77, 255, 180, 0.18);
+
+    --blue: #35b6ff;
+    --blue-soft: rgba(53, 182, 255, 0.2);
+
+    --violet: #8a6bff;
+    --border: rgba(83, 151, 255, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(53, 182, 255, 0.2), transparent 34%),
+        radial-gradient(circle at 82% 24%, rgba(77, 255, 180, 0.18), transparent 36%),
+        radial-gradient(circle at 52% 85%, rgba(138, 107, 255, 0.14), transparent 40%),
+        linear-gradient(160deg, var(--bg-0), var(--bg-1) 42%, var(--bg-2));
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+.site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 30;
+    background: rgba(10, 13, 13, 0.72);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+}
+
+.brand {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.brand span,
+.site-footer span,
+.kicker {
+    color: var(--green);
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.35rem;
+}
+
+.nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    padding: 0.45rem 0.8rem;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--green);
+    background: var(--green-soft);
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    padding-top: 88px;
+    background:
+        linear-gradient(115deg, rgba(8, 10, 10, 0.78) 8%, rgba(13, 16, 15, 0.42) 46%, rgba(17, 20, 19, 0.32) 100%),
+        radial-gradient(circle at 78% 20%, rgba(53, 182, 255, 0.26), transparent 40%),
+        radial-gradient(circle at 25% 76%, rgba(77, 255, 180, 0.2), transparent 38%),
+        url("../img/img_hero.png") center/cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(53,182,255,.22), transparent 32%),
+      radial-gradient(circle at 20% 75%, rgba(77,255,180,.18), transparent 30%);
+    animation: pulseGlow 6s ease-in-out infinite alternate;
+  }
+  @keyframes pulseGlow {
+    from { opacity: .7; filter: blur(2px); }
+    to   { opacity: 1; filter: blur(7px); }
+  }
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(7, 10, 10, 0.06) 0%, rgba(7, 10, 10, 0.36) 100%),
+        repeating-linear-gradient(
+            90deg,
+            rgba(141, 169, 217, 0.09) 0,
+            rgba(141, 169, 217, 0.09) 1px,
+            transparent 1px,
+            transparent 92px
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 2rem;
+}
+
+.hero-intro h1 {
+    margin: 0.5rem 0 0.9rem;
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+    line-height: 1.1;
+}
+
+.hero-intro p {
+    color: var(--gray);
+    max-width: 60ch;
+}
+
+.hero-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+.project-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.section {
+    padding: 5rem 0;
 }
 
 .section-head h2 {
@@ -277,39 +690,10 @@ body {
     color: var(--muted);
 }
 
-.hero-neon {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 80% 22%, rgba(81, 248, 154, 0.26), transparent 24%),
-        radial-gradient(circle at 18% 75%, rgba(69, 199, 255, 0.22), transparent 28%);
-    filter: blur(8px);
-}
-
 .project-card {
     background: rgba(18, 24, 23, 0.62);
     border: 1px solid rgba(81, 248, 154, 0.26);
     box-shadow: 0 8px 22px rgba(4, 12, 12, 0.42);
-}
-
-.project-card:hover {
-    border-color: rgba(69, 199, 255, 0.55);
-    box-shadow: 0 0 30px rgba(69, 199, 255, 0.22), 0 0 20px rgba(81, 248, 154, 0.14);
-}
-
-.card-link {
-    margin-top: 0.7rem;
-    padding: 0.5rem 0.8rem;
-    border-radius: 8px;
-    border: 1px solid rgba(69, 199, 255, 0.45);
-    background: linear-gradient(120deg, rgba(69, 199, 255, 0.16), rgba(81, 248, 154, 0.1));
-    color: #dff8ff;
-    cursor: pointer;
-}
-
-body.modal-open {
-    overflow: hidden;
 }
 
 .project-modal {
@@ -369,6 +753,169 @@ body.modal-open {
     border: 1px solid rgba(69, 199, 255, 0.4);
     background: rgba(12, 19, 19, 0.9);
     color: #dff8ff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.hero-neon {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(53, 182, 255, 0.28), transparent 24%),
+        radial-gradient(circle at 18% 72%, rgba(77, 255, 180, 0.24), transparent 27%);
+    filter: blur(8px);
+    animation: neonPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    from { opacity: 0.68; }
+    to { opacity: 1; }
+}
+
+.project-card {
+    background: rgba(15, 22, 38, 0.62);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 28px rgba(6, 12, 24, 0.5);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+    border-color: rgba(53, 182, 255, 0.72);
+    box-shadow: 0 0 30px rgba(53, 182, 255, 0.24), 0 0 22px rgba(77, 255, 180, 0.15);
+    transform: translateY(-4px);
+}
+
+.project-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background: linear-gradient(135deg, rgba(53, 182, 255, 0.24), rgba(77, 255, 180, 0.2));
+}
+
+.project-icon--shield { box-shadow: 0 0 12px rgba(53, 182, 255, 0.32); }
+.project-icon--building { box-shadow: 0 0 12px rgba(138, 107, 255, 0.32); }
+.project-icon--file { box-shadow: 0 0 12px rgba(77, 255, 180, 0.32); }
+.project-icon--chart { box-shadow: 0 0 12px rgba(53, 182, 255, 0.32); }
+
+.card-link {
+    display: inline-block;
+    margin-top: 0.7rem;
+    padding: 0.52rem 0.84rem;
+    border-radius: 8px;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background: linear-gradient(120deg, rgba(53, 182, 255, 0.16), rgba(77, 255, 180, 0.1));
+    color: #dff3ff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.section-dark {
+    background:
+        radial-gradient(circle at 80% 10%, rgba(53, 182, 255, 0.08), transparent 36%),
+        linear-gradient(180deg, #101730, #0d1327);
+    border-top: 1px solid rgba(53, 182, 255, 0.15);
+    border-bottom: 1px solid rgba(77, 255, 180, 0.12);
+}
+
+.service-grid article {
+    border: 1px solid rgba(83, 151, 255, 0.35);
+    border-radius: 12px;
+    padding: 1rem;
+    background: rgba(18, 27, 47, 0.62);
+    box-shadow: 0 8px 24px rgba(7, 13, 25, 0.35);
+}
+
+.service-grid article:hover {
+    border-color: rgba(77, 255, 180, 0.55);
+    box-shadow: 0 0 24px rgba(77, 255, 180, 0.16);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: none;
+}
+
+.project-modal.is-open {
+    display: block;
+}
+
+.project-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 8, 20, 0.72);
+    backdrop-filter: blur(7px);
+}
+
+.project-modal__panel {
+    position: relative;
+    width: min(700px, 92%);
+    margin: 8vh auto 0;
+    padding: 1.3rem;
+    border-radius: 14px;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background:
+        linear-gradient(145deg, rgba(14, 23, 42, 0.96), rgba(11, 18, 34, 0.95)),
+        radial-gradient(circle at 92% 8%, rgba(53, 182, 255, 0.2), transparent 32%);
+    box-shadow: 0 0 35px rgba(53, 182, 255, 0.26), 0 0 20px rgba(77, 255, 180, 0.16);
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.project-modal__panel h3 {
+    margin: 0.3rem 0 0.7rem;
+    font-size: 1.45rem;
+}
+
+.project-modal__panel p,
+.project-modal__panel li {
+    color: var(--muted);
+}
+
+.project-modal__panel ul {
+    margin: 0.8rem 0 0 1.2rem;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.project-modal__close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(53, 182, 255, 0.5);
+    background: rgba(9, 16, 30, 0.95);
+    color: #dff3ff;
     font-size: 1.1rem;
     cursor: pointer;
 }

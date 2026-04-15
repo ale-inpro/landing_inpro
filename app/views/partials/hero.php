@@ -3,18 +3,19 @@
     <div class="hero-neon"></div>
 
     <div class="container hero-content">
-        <div class="hero-intro">
-            <p class="kicker">Tecnologia e integraciones para empresas</p>
-            <h1>Construimos soluciones robustas para operaciones reales.</h1>
+        <div class="hero-intro reveal">
+            <p class="kicker">Tecnologia + IA + Integraciones</p>
+            <h1>Soluciones digitales avanzadas para empresas que quieren evolucionar.</h1>
             <p>
-                InPro combina desarrollo, automatizacion e inteligencia artificial para transformar procesos complejos
-                en flujos claros, medibles y escalables.
+                En InPro transformamos procesos complejos en operaciones claras, medibles y escalables.
+                Innovacion aplicada para resultados reales.
             </p>
         </div>
 
         <div class="hero-cards">
             <?php foreach ($projects as $project): ?>
-                <article class="project-card">
+                <article class="project-card reveal">
+                    <span class="project-icon project-icon--<?= htmlspecialchars($project['icon'], ENT_QUOTES, 'UTF-8'); ?>"></span>
                     <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
                     <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
                     <button
@@ -30,7 +31,7 @@
     </div>
 </section>
 
-<div class="project-modals" aria-hidden="true">
+<div id="project-modals" class="project-modals" aria-hidden="true">
     <?php foreach ($projects as $project): ?>
         <section
             class="project-modal"
@@ -40,7 +41,7 @@
             aria-labelledby="title-<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
         >
             <div class="project-modal__backdrop js-close-modal"></div>
-            <div class="project-modal__panel">
+            <div class="project-modal__panel" tabindex="-1">
                 <button type="button" class="project-modal__close js-close-modal" aria-label="Cerrar modal">×</button>
                 <p class="kicker">Proyecto InPro</p>
                 <h3 id="title-<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>">
