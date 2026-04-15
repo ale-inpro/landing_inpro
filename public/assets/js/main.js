@@ -61,7 +61,8 @@ function closeAllModals() {
 }
 
 openButtons.forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
         const projectId = button.dataset.project;
         const targetModal = document.querySelector(`.project-modal[data-modal="${projectId}"]`);
         if (!targetModal) return;

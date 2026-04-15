@@ -33,13 +33,13 @@
                     <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
                     <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
 
-                    <button
-                        type="button"
+                    <a
+                        href="#"
                         class="card-link js-open-project"
                         data-project="<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
                     >
                         Ver mas <span class="card-link__arrow" aria-hidden="true">→</span>
-                    </button>
+                    </a>
                 </article>
             <?php endforeach; ?>
         </div>
