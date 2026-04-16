@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Services\ResendMailer;
+use PDO;
+use PDOException;
 
 final class ContactController
 {
@@ -34,15 +36,65 @@ final class ContactController
             return;
         }
 
-        $mailer = new ResendMailer($this->config['mail'] ?? []);
-        $sent = $mailer->sendContactMail($name, $email, $message);
-
-        if (!$sent) {
+        // 1) Guardar en BD
+        try {
+            $this->storeInDatabase($name, $email, $message);
+        } catch (PDOException $e) {
             http_response_code(500);
-            echo json_encode(['ok' => false, 'message' => 'No se pudo enviar el mensaje.']);
+            echo json_encode(['ok' => false, 'message' => 'No se pudo guardar el mensaje en base de datos.']);
             return;
         }
 
-        echo json_encode(['ok' => true, 'message' => 'Mensaje enviado correctamente.']);
+       // 2) Enviar email con Resend
+       try {
+            $mailer = new ResendMailer($this->config['mail'] ?? []);
+            $mailResult = $mailer->sendContactMail($name, $email, $message);
+        } catch (\Throwable $e) {
+            http_response_code(500);
+            echo json_encode([
+                'ok' => false,
+                'message' => 'Error interno al enviar email (Resend).',
+            ]);
+            return;
+        }
+        
+        if (!$mailResult['ok']) {
+            http_response_code(500);
+            echo json_encode([
+                'ok' => false,
+                'message' => 'Mensaje guardado, pero fallo Resend.',
+                'debug' => $mailResult,
+            ]);
+            return;
+        }
+
+        echo json_encode(['ok' => true, 'message' => 'Mensaje guardado y enviado correctamente.']);
+    }
+
+    private function storeInDatabase(string $name, string $email, string $message): void
+    {
+        $db = $this->config['db'] ?? [];
+
+        $host = $db['host'] ?? '127.0.0.1';
+        $port = $db['port'] ?? '3306';
+        $database = $db['database'] ?? '';
+        $username = $db['username'] ?? '';
+        $password = $db['password'] ?? '';
+        $charset = $db['charset'] ?? 'utf8mb4';
+
+        $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s;charset=%s', $host, $port, $database, $charset);
+
+        $pdo = new PDO($dsn, $username, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]);
+
+        $sql = 'INSERT INTO contact_messages (name, email, message) VALUES (:name, :email, :message)';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':name' => $name,
+            ':email' => $email,
+            ':message' => $message,
+        ]);
     }
 }

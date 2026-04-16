@@ -48,6 +48,16 @@ return [
     'name' => env('APP_NAME', 'InPro'),
     'url' => env('APP_URL', 'http://localhost/landing_inpro/public'),
     'debug' => env('APP_DEBUG', 'false') === 'true',
+
+    'db' => [
+        'host' => env('DB_HOST', '127.0.0.1'),
+        'port' => env('DB_PORT', '3306'),
+        'database' => env('DB_DATABASE', 'landing_inpro'),
+        'username' => env('DB_USERNAME', 'root'),
+        'password' => env('DB_PASSWORD', ''),
+        'charset' => env('DB_CHARSET', 'utf8mb4'),
+    ],
+
     'mail' => [
         'resend_api_key' => env('RESEND_API_KEY', ''),
         'from' => env('MAIL_FROM', 'onboarding@resend.dev'),

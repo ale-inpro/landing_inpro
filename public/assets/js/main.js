@@ -99,10 +99,23 @@ contactForm?.addEventListener('submit', async (event) => {
             method: 'POST',
             body: formData,
         });
-        const data = await response.json();
+        
+        const contentType = response.headers.get('content-type') || '';
+        let data;
+
+        if (contentType.includes('application/json')) {
+            data = await response.json();
+        } else {
+            const raw = await response.text();
+            throw new Error(`Respuesta no JSON del servidor: ${raw.slice(0, 120)}`);
+        }
 
         if (!response.ok || !data.ok) {
-            throw new Error(data.message || 'Error al enviar el formulario');
+            throw new Error(
+                data.debug
+                  ? `${data.message} | ${JSON.stringify(data.debug)}`
+                  : (data.message || 'Error al enviar el formulario')
+              );
         }
 
         contactFeedback.textContent = data.message;
