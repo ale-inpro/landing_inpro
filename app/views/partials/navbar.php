@@ -10,7 +10,11 @@
             </span>
         </a>
 
-        <button class="menu-toggle" type="button" aria-label="Abrir menu">Menu</button>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>

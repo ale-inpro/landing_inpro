@@ -6,40 +6,7 @@
                 alt="Logo InPro"
                 class="footer-logo"
             />
-            <div class="footer-social">
-                <a
-                    href="https://www.instagram.com/TU_USUARIO"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                >
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a
-                    href="https://www.facebook.com/TU_PAGINA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                >
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a
-                    href="https://www.linkedin.com/company/TU_EMPRESA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                >
-                    <i class="bi bi-linkedin"></i>
-                </a>
-                <a
-                    href="https://wa.me/34658286556"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="WhatsApp"
-                >
-                    <i class="bi bi-whatsapp"></i>
-                </a>
-            </div>
+            
         </div>
 
         <div class="footer-contact">

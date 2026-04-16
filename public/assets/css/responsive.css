@@ -11,7 +11,7 @@
 
 @media (max-width: 760px) {
     .menu-toggle {
-        display: inline-block;
+        display: flex;
     }
 
     .nav-links {

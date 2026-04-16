@@ -77,7 +77,7 @@
                 </div>
 
                 <p class="modal-description"><?= htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
-                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'control-empresas', 'inpro-gestion'], true)): ?>
+                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'control-empresas', 'inpro-gestion', 'atalaya'], true)): ?>
                     <p class="modal-subtitle"><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
 
                     <div class="modal-stats">

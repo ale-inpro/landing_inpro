@@ -170,12 +170,52 @@ final class HomeController
                 ],
                 'tags' => ['Control', 'Operaciones', 'Analitica'],
             ],
+            [
+                'id' => 'atalaya',
+                'name' => 'Atalaya',
+               'logo' => '/assets/img/logo_atalaya.png',
+                'tagline' => 'Visor y archivo de informes, conectado con Vig-IA.',
+                'description' => 'Atalaya es el visor donde consultas, organizas y almacenas los informes generados por Vig-IA. Centraliza la documentacion tecnica en un solo lugar, con acceso claro y trazabilidad.',
+                'stats' => [
+                    ['icon' => 'bi bi-eye', 'value' => 'Visor', 'label' => 'Informes en un clic'],
+                    ['icon' => 'bi bi-archive', 'value' => 'Archivo', 'label' => 'Almacenamiento ordenado'],
+                    ['icon' => 'bi bi-link-45deg', 'value' => 'Vig-IA', 'label' => 'Informes que llegan aqui'],
+                ],
+                'features' => [
+                    [
+                        'icon' => 'bi bi-folder2-open',
+                        'title' => 'Consulta centralizada',
+                        'text' => 'Accede a los informes generados por Vig-IA desde un unico punto, sin dispersar archivos entre equipos.',
+                    ],
+                    [
+                        'icon' => 'bi bi-hdd-stack',
+                        'title' => 'Almacenamiento estructurado',
+                        'text' => 'Mantén el historial de informes organizado y disponible cuando lo necesites.',
+                    ],
+                    [
+                        'icon' => 'bi bi-arrow-left-right',
+                        'title' => 'Flujo Vig-IA → Atalaya',
+                        'text' => 'Vig-IA produce el informe; Atalaya lo recibe, guarda y lo muestra listo para revisar o compartir.',
+                    ],
+                    [
+                        'icon' => 'bi bi-shield-check',
+                        'title' => 'Control de acceso',
+                        'text' => 'Quien ve que informe queda acotado a tu organizacion y a los permisos que definas.',
+                    ],
+                ],
+                'highlights' => [
+                    'Visor unificado de informes',
+                    'Integracion con generacion Vig-IA',
+                    'Archivo buscable y ordenado',
+                ],
+                'tags' => ['Informes', 'Visor', 'Archivo'],
+            ],
         ];
 
         $about = [
             'logo' => '/assets/img/logo_inpro.png',
             'title' => 'Tecnologia, integracion e innovacion para empresas',
-            'text' => 'InPro desarrolla soluciones tecnologicas, integraciones y herramientas digitales orientadas a mejorar procesos, optimizar la gestion y aportar eficiencia real a empresas y organizaciones. Combinamos experiencia, desarrollo propio e innovacion para construir respuestas utiles, escalables y alineadas con cada necesidad.',
+            'text' => 'Desarrollamos herramientas digitales e integraciones tecnologicas para optimizar la gestion y aportar eficiencia real, innovadora y escalable a tu empresa.',
         ];
 
         $appName = $this->config['name'] ?? 'InPro';
