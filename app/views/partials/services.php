@@ -7,20 +7,20 @@
     <div class="service-grid">
         <article class="reveal">
             <div class="service-icon"><i class="bi bi-code-slash"></i></div>
-            <h3>Desarrollo de software</h3>
-            <p>Aplicaciones y plataformas personalizadas para necesidades especificas de negocio.</p>
+            <h3>Desarrollo de soluciones digitales</h3>
+            <p>Aplicaciones, plataformas y herramientas adaptadas a las necesidades reales de cada organizacion.</p>
         </article>
 
         <article class="reveal">
             <div class="service-icon"><i class="bi bi-plug"></i></div>
-            <h3>Integraciones de sistemas</h3>
-            <p>Conexion entre herramientas para crear flujos de trabajo unificados y trazables.</p>
+            <h3>Integracion de sistemas y procesos</h3>
+            <p>Conexion entre herramientas, datos y flujos de trabajo para mejorar control, eficiencia y trazabilidad.</p>
         </article>
 
         <article class="reveal">
             <div class="service-icon"><i class="bi bi-robot"></i></div>
-            <h3>Optimizacion con IA</h3>
-            <p>Automatizacion de tareas, apoyo en decision y mejoras de productividad con IA aplicada.</p>
+            <h3>Automatizacion e innovacion aplicada</h3>
+            <p>Tecnologia orientada a simplificar tareas, optimizar la gestion y aportar mejoras medibles en el dia a dia.</p>
         </article>
     </div>
 </section>

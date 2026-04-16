@@ -11,22 +11,22 @@
         </div>
 
         <div class="about-content">
-            <p class="kicker">Que hace InPro</p>
+            <p class="kicker">Sobre InPro</p>
             <h2><?= htmlspecialchars($about['title'], ENT_QUOTES, 'UTF-8'); ?></h2>
             <p class="lead"><?= htmlspecialchars($about['text'], ENT_QUOTES, 'UTF-8'); ?></p>
 
             <div class="about-stats">
                 <article>
-                    <strong>+10</strong>
-                    <span>Soluciones</span>
+                    <strong>Soluciones</strong>
+                    <span>Adaptadas a cada necesidad</span>
                 </article>
                 <article>
-                    <strong>IA</strong>
-                    <span>En procesos clave</span>
+                    <strong>Procesos</strong>
+                    <span>Optimizados con tecnologia</span>
                 </article>
                 <article>
-                    <strong>24/7</strong>
-                    <span>Foco en operacion</span>
+                    <strong>Valor</strong>
+                    <span>Resultados orientados a negocio</span>
                 </article>
             </div>
         </div>

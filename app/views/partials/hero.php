@@ -4,43 +4,45 @@
 
     <div class="container hero-content">
         <div class="hero-intro reveal">
-            <p class="kicker">Tecnologia + IA + Integraciones</p>
-            <h1>Soluciones digitales avanzadas para empresas que quieren evolucionar.</h1>
-            <p>
-                En InPro transformamos procesos complejos en operaciones claras, medibles y escalables.
-                Innovacion aplicada para resultados reales.
-            </p>
-            <div class="hero-badges">
-                <span><i class="bi bi-cpu"></i> IA aplicada</span>
-                <span><i class="bi bi-diagram-3"></i> Integraciones</span>
-                <span><i class="bi bi-bar-chart-line"></i> Optimizacion</span>
+            <div class="hero-head">
+                <p class="kicker">Tecnologia + IA + Integraciones</p>
+                <h1>Soluciones digitales avanzadas para empresas que quieren evolucionar.</h1>
+                <p>
+                    En InPro transformamos procesos complejos en operaciones claras, medibles y escalables.
+                    Innovacion aplicada para resultados reales.
+                </p>
+                <div class="hero-badges">
+                    <span><i class="bi bi-cpu"></i> IA aplicada</span>
+                    <span><i class="bi bi-diagram-3"></i> Integraciones</span>
+                    <span><i class="bi bi-bar-chart-line"></i> Optimizacion</span>
+                </div>
             </div>
-        </div>
 
-        <div class="hero-cards">
-            <?php foreach ($projects as $project): ?>
-                <article class="project-card reveal">
-                    <div class="project-card__top">
-                        <img
-                            class="project-logo"
-                            src="<?= htmlspecialchars($baseUrl . $project['logo'], ENT_QUOTES, 'UTF-8'); ?>"
-                            alt="Logo <?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                            loading="lazy"
-                        />
-                    </div>
+            <div class="hero-cards">
+                <?php foreach ($projects as $project): ?>
+                    <article class="project-card reveal">
+                        <div class="project-card__top">
+                            <img
+                                class="project-logo"
+                                src="<?= htmlspecialchars($baseUrl . $project['logo'], ENT_QUOTES, 'UTF-8'); ?>"
+                                alt="Logo <?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                                loading="lazy"
+                            />
+                        </div>
 
-                    <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                    <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                        <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
 
-                    <a
-                        href="#"
-                        class="card-link js-open-project"
-                        data-project="<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
-                    >
-                        Ver mas <span class="card-link__arrow" aria-hidden="true">→</span>
-                    </a>
-                </article>
-            <?php endforeach; ?>
+                        <a
+                            href="#"
+                            class="card-link js-open-project"
+                            data-project="<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
+                        >
+                            Ver mas <span class="card-link__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
@@ -58,6 +60,7 @@
             <div class="project-modal__panel" tabindex="-1">
                 <button type="button" class="project-modal__close js-close-modal" aria-label="Cerrar modal">×</button>
 
+                <div class="project-modal__scroll">
                 <div class="modal-brand">
                     <img
                         class="modal-brand__logo"
@@ -115,6 +118,7 @@
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
+                </div>
             </div>
         </section>
     <?php endforeach; ?>

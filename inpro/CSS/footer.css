@@ -25,12 +25,12 @@
 }
 
 .footer-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #ffffff;
+    display: block;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
 }
-
-.footer-logo span { color: #4ec3ff; }
 
 .footer-description {
     font-size: 0.9rem;

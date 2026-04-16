@@ -19,8 +19,8 @@ final class HomeController
                 'id' => 'vigia',
                 'name' => 'Vig-IA',
                 'logo' => '/assets/img/logo-vigia.png',
-                'tagline' => 'Generación inteligente de informes de la trazabilidad de tus proyectos publicos.',
-                'description' => 'Del campo a reporte tecnico en segundos.',
+                'tagline' => 'Automatiza la gestión de tu empresa técnica con IA.',
+                'description' => 'Vig-IA automatiza la gestión de tu empresa técnica con IA. Genera informes en segundos, no en horas. Gestiona personal, maquinaria y actividades desde un solo lugar.',
                 'stats' => [
                     ['icon' => 'bi bi-file-earmark-text', 'value' => '-80%', 'label' => 'Tiempo en papeleo'],
                     ['icon' => 'bi bi-mouse2', 'value' => '1 click', 'label' => 'Para generar informes'],
@@ -138,7 +138,7 @@ final class HomeController
             [
                 'id' => 'control-empresas',
                 'name' => 'Control de Empresas',
-                'logo' => '/assets/img/logo-reajustado.webp',
+                'logo' => '/assets/img/logo_inpro.png',
                 'tagline' => 'La solución que amplía, conecta y moderniza el software con el que trabaja tu empresa.',
                 'description' => 'Conjunto de herramientas para supervisar indicadores clave, integraciones y operaciones transversales de manera unificada.',
                 'stats' => [
@@ -174,8 +174,8 @@ final class HomeController
 
         $about = [
             'logo' => '/assets/img/logo_inpro.png',
-            'title' => 'Desarrollo tecnologico con impacto real',
-            'text' => 'InPro es una empresa de desarrollo tecnologico e integraciones. Creamos productos propios y soluciones a medida para optimizar procesos, mejorar eficiencia y acelerar resultados con IA.',
+            'title' => 'Tecnologia, integracion e innovacion para empresas',
+            'text' => 'InPro desarrolla soluciones tecnologicas, integraciones y herramientas digitales orientadas a mejorar procesos, optimizar la gestion y aportar eficiencia real a empresas y organizaciones. Combinamos experiencia, desarrollo propio e innovacion para construir respuestas utiles, escalables y alineadas con cada necesidad.',
         ];
 
         $appName = $this->config['name'] ?? 'InPro';

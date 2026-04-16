@@ -8,6 +8,8 @@ declare(strict_types=1);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($appName, ENT_QUOTES, 'UTF-8'); ?> | Innovacion tecnologica</title>
     <meta name="description" content="InPro desarrolla soluciones tecnologicas e integraciones con foco en eficiencia e IA.">
+    <link rel="icon" type="image/png" href="<?= htmlspecialchars($baseUrl, ENT_QUOTES, 'UTF-8'); ?>/assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="<?= htmlspecialchars($baseUrl, ENT_QUOTES, 'UTF-8'); ?>/assets/img/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?= $baseUrl; ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= $baseUrl; ?>/assets/css/responsive.css">

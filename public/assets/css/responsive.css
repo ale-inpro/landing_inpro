@@ -20,7 +20,7 @@
         right: 4%;
         width: min(280px, 92%);
         background: #101515;
-        border: 1px solid rgba(81, 248, 154, 0.22);
+        border: 1px solid rgba(var(--inpro-green-r), var(--inpro-green-g), var(--inpro-green-b), 0.22);
         border-radius: 10px;
         flex-direction: column;
         padding: 0.75rem;
