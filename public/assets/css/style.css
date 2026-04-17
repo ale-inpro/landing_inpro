@@ -76,6 +76,9 @@ body::before {
     text-transform: uppercase;
     font-size: 0.8rem;
 }
+.contact-panel .kicker {
+    color: var(--green); /* aquí pones el color que quieras */
+  }
 
 .about-content .kicker+h2,
 .section-head .kicker+h2,

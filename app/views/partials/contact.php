@@ -14,8 +14,16 @@
 
         <form id="contact-form" class="contact-form reveal" action="<?= $baseUrl; ?>/contact" method="POST">
             <label>
+                  Asunto
+                 <input type="text" name="subject" required>
+            </label>
+            <label>
                 Nombre
                 <input type="text" name="name" required>
+            </label>
+            <label>
+                Teléfono
+                <input type="tel" name="phone" required>
             </label>
             <label>
                 Email

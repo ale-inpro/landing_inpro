@@ -10,8 +10,13 @@ final class ResendMailer
     {
     }
 
-    public function sendContactMail(string $name, string $email, string $message): array
-    {
+    public function sendContactMail(
+        string $name,
+        string $email,
+        string $message,
+        string $subjectFromForm = '',
+        string $phone = ''
+    ): array {
         if (!function_exists('curl_init')) {
             return ['ok' => false, 'error' => 'cURL no disponible'];
         }
@@ -25,11 +30,16 @@ final class ResendMailer
             return ['ok' => false, 'error' => 'Falta RESEND_API_KEY o MAIL_TO'];
         }
 
+        $subjectFromForm = trim($subjectFromForm);
+        $subject = $subjectFromForm !== ''
+            ? sprintf('[InPro] %s', $subjectFromForm)
+            : sprintf('[InPro] Nueva solicitud de contacto - %s', $name);
+
         $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
         $safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+        $safePhone = htmlspecialchars($phone, ENT_QUOTES, 'UTF-8');
+        $safeSubject = htmlspecialchars($subjectFromForm, ENT_QUOTES, 'UTF-8');
         $safeMessage = nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8'));
-
-        $subject = sprintf('[InPro] Nueva solicitud de contacto - %s', $name);
 
         $html = <<<HTML
         <div style="font-family:Segoe UI,Arial,sans-serif;background:#0b1220;padding:24px;color:#eaf2ff;">
@@ -42,7 +52,9 @@ final class ResendMailer
             </tr>
             <tr>
             <td style="padding:20px;">
+                <p style="margin:0 0 12px;color:#cfe0ff;"><strong>Asunto:</strong> {$safeSubject}</p>
                 <p style="margin:0 0 12px;color:#cfe0ff;"><strong>Nombre:</strong> {$safeName}</p>
+                <p style="margin:0 0 12px;color:#cfe0ff;"><strong>Teléfono:</strong> {$safePhone}</p>
                 <p style="margin:0 0 12px;color:#cfe0ff;"><strong>Email:</strong> {$safeEmail}</p>
                 <p style="margin:0 0 8px;color:#cfe0ff;"><strong>Mensaje:</strong></p>
                 <div style="padding:14px;border:1px solid #2e4a79;border-radius:10px;background:#0b1426;color:#e7f1ff;line-height:1.55;">
@@ -60,17 +72,19 @@ final class ResendMailer
         HTML;
 
         $text = "InPro - Nueva solicitud de contacto\n\n"
+            . "Asunto: {$subjectFromForm}\n"
             . "Nombre: {$name}\n"
+            . "Teléfono: {$phone}\n"
             . "Email: {$email}\n\n"
             . "Mensaje:\n{$message}\n";
 
-            $payload = [
-                'from' => $from,
-                'to' => [$to],
-                'subject' => $subject,
-                'html' => $html,
-                'text' => $text,
-            ];
+        $payload = [
+            'from' => $from,
+            'to' => [$to],
+            'subject' => $subject,
+            'html' => $html,
+            'text' => $text,
+        ];
 
         if ($replyTo !== '') {
             $payload['reply_to'] = $replyTo;

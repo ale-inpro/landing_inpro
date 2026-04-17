@@ -20,11 +20,13 @@ final class ContactController
     {
         header('Content-Type: application/json; charset=utf-8');
 
+        $subject = trim($_POST['subject'] ?? '');
         $name = trim($_POST['name'] ?? '');
         $email = trim($_POST['email'] ?? '');
+        $phone = trim($_POST['phone'] ?? '');
         $message = trim($_POST['message'] ?? '');
 
-        if ($name === '' || $email === '' || $message === '') {
+        if ($subject === '' || $name === '' || $email === '' || $phone === '' || $message === '') {
             http_response_code(422);
             echo json_encode(['ok' => false, 'message' => 'Todos los campos son obligatorios.']);
             return;
@@ -38,17 +40,23 @@ final class ContactController
 
         // 1) Guardar en BD
         try {
-            $this->storeInDatabase($name, $email, $message);
+            $this->storeInDatabase($subject, $name, $email, $phone, $message);
         } catch (PDOException $e) {
             http_response_code(500);
             echo json_encode(['ok' => false, 'message' => 'No se pudo guardar el mensaje en base de datos.']);
             return;
         }
+        $messageForEmail =
+              "Asunto: {$subject}\n" .
+              "Nombre: {$name}\n" .
+              "Teléfono: {$phone}\n" .
+              "Email: {$email}\n\n" .
+              "Mensaje: {$message}";
 
        // 2) Enviar email con Resend
        try {
             $mailer = new ResendMailer($this->config['mail'] ?? []);
-            $mailResult = $mailer->sendContactMail($name, $email, $message);
+            $mailResult = $mailer->sendContactMail($name, $email, $messageForEmail, $subject, $phone);
         } catch (\Throwable $e) {
             http_response_code(500);
             echo json_encode([
@@ -71,7 +79,7 @@ final class ContactController
         echo json_encode(['ok' => true, 'message' => 'Mensaje guardado y enviado correctamente.']);
     }
 
-    private function storeInDatabase(string $name, string $email, string $message): void
+    private function storeInDatabase(string $subject, string $name, string $email, string $phone, string $message): void
     {
         $db = $this->config['db'] ?? [];
 
@@ -89,11 +97,13 @@ final class ContactController
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
 
-        $sql = 'INSERT INTO contact_messages (name, email, message) VALUES (:name, :email, :message)';
+        $sql = 'INSERT INTO contact_messages (subject, name, email, phone, message) VALUES (:subject, :name, :email, :phone, :message)';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
+            ':subject' => $subject,
             ':name' => $name,
             ':email' => $email,
+            ':phone' => $phone,
             ':message' => $message,
         ]);
     }
