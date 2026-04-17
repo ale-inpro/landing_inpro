@@ -17,10 +17,10 @@
         </button>
 
         <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#inpro">InPro</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#inpro">INPRO</a></li>
+            <li><a href="#servicios">SERVICIOS</a></li>
+            <li><a href="#contacto">CONTACTO</a></li>
         </ul>
     </nav>
 </header>

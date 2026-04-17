@@ -139,6 +139,9 @@ body {
     padding: 1.2rem;
     transition: background 0.2s ease, border-color 0.2s ease;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 100%
 }
 
 .producto-item:hover {
@@ -175,7 +178,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    margin-top: 0.6rem;
+    margin-top: auto;
     font-size: 0.82rem;
     color: #4ec3ff;
     font-weight: 600;
