@@ -39,8 +39,8 @@ $jsonLd = json_encode([
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= $siteUrl; ?>/">
     <meta property="og:image" content="<?= $safeBase; ?>/assets/img/og-image.webp">
-    <link rel="icon" type="image/webp" href="<?= $safeBase; ?>/assets/img/favicon.webp" sizes="32x32">
-    <link rel="apple-touch-icon" href="<?= $safeBase; ?>/assets/img/favicon.webp">
+    <link rel="icon" type="image/x-icon" href="<?= $safeBase; ?>/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="<?= $safeBase; ?>/assets/img/logo_inpro.webp">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?= $safeBase; ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= $safeBase; ?>/assets/css/responsive.css">

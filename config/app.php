@@ -45,7 +45,7 @@ if (!function_exists('env')) {
 loadEnvFile(dirname(__DIR__) . '/.env');
 
 return [
-    'name' => env('APP_NAME', 'InPro'),
+    'name' => env('APP_NAME', 'INPRO'),
     'url' => env('APP_URL', 'http://localhost/landing_inpro/public'),
     'debug' => env('APP_DEBUG', 'false') === 'true',
 

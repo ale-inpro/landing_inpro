@@ -1,6 +1,6 @@
 {
   "name": "inpro/landing",
-  "description": "Landing page base for InPro (PHP MVC simple)",
+  "description": "Landing page base for INPRO (PHP MVC simple)",
   "type": "project",
   "autoload": {
     "psr-4": {

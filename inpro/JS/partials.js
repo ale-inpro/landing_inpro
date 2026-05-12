@@ -1,30 +1,42 @@
 async function loadPartials() {
-    const [headerRes, footerRes] = await Promise.all([
-        fetch('header.html'),
-        fetch('footer.html')
-    ]);
-    document.getElementById('header').innerHTML = await headerRes.text();
-    document.getElementById('footer').innerHTML = await footerRes.text();
+    try {
+        const [headerRes, footerRes] = await Promise.all([
+            fetch('header.html'),
+            fetch('footer.html')
+        ]);
+
+        if (!headerRes.ok || !footerRes.ok) {
+            return;
+        }
+
+        const headerEl = document.getElementById('header');
+        const footerEl = document.getElementById('footer');
+        if (headerEl) headerEl.innerHTML = await headerRes.text();
+        if (footerEl) footerEl.innerHTML = await footerRes.text();
+    } catch {
+        return;
+    }
 
     const esIndex = !!document.getElementById('card-productos');
+    const validTargets = ['card-inicio', 'card-productos', 'card-esencia', 'card-contacto'];
 
     if (esIndex) {
         activarMenu();
-        // Si venimos de una página de producto, mostrar la sección correcta
         const params = new URLSearchParams(window.location.search);
         const seccion = params.get('seccion');
-        if (seccion) {
+        if (seccion && validTargets.includes(seccion)) {
             const link = document.querySelector(`[data-target="${seccion}"]`);
             if (link) link.click();
         }
     } else {
-        // En páginas de producto los links navegan al index con la sección
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = this.getAttribute('data-target');
-                window.location.href = 'index.html?seccion=' + target;
+                if (target && validTargets.includes(target)) {
+                    window.location.href = 'index.html?seccion=' + encodeURIComponent(target);
+                }
             });
         });
 
@@ -58,7 +70,8 @@ function activarMenu() {
     if (logo) {
         logo.addEventListener('click', function(e) {
             e.preventDefault();
-            document.querySelector('[data-target="card-inicio"]').click();
+            const inicioLink = document.querySelector('[data-target="card-inicio"]');
+            if (inicioLink) inicioLink.click();
         });
     }
 }

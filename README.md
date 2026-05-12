@@ -1,6 +1,6 @@
-# InPro Landing (Base Fase 1)
+# INPRO Landing (Base Fase 1)
 
-Base inicial de la landing de InPro con PHP (MVC simple), hero full screen, secciones con scroll y formulario de contacto preparado para Resend.
+Base inicial de la landing de INPRO con PHP (MVC simple), hero full screen, secciones con scroll y formulario de contacto preparado para Resend.
 
 ## Estructura
 
