@@ -17,10 +17,10 @@ final class HomeController
         $projects = [
             [
                 'id' => 'vigia',
-                'name' => 'Vig-IA',
+                'name' => 'VIG-IA',
                 'logo' => '/assets/img/logo_vigia.webp',
-                'tagline' => 'Automatiza la gestión de tu empresa técnica con IA.',
-                'description' => 'Vig-IA automatiza la gestión de tu empresa técnica con IA. Genera informes en segundos, no en horas. Gestiona personal, maquinaria y actividades desde un solo lugar.',
+                'tagline' => 'Gestión técnica con IA para empresas de inspección y mantenimiento.',
+                'description' => 'VIG-IA automatiza la gestión de empresas técnicas de inspección y mantenimiento. Genera informes en segundos, gestiona personal, maquinaria y actividades desde un solo lugar.',
                 'stats' => [
                     ['icon' => 'bi bi-file-earmark-text', 'value' => '-80%', 'label' => 'Tiempo en papeleo'],
                     ['icon' => 'bi bi-mouse2', 'value' => '1 click', 'label' => 'Para generar informes'],
@@ -54,8 +54,8 @@ final class HomeController
                 'id' => 'inpro-hub',
                 'name' => 'INPRO HUB',
                 'logo' => '/assets/img/logo_inpro_hub.webp',
-                'tagline' => 'Optimización, cumplimiento y valor.',
-                'description' => 'Plataforma centralizada para procesos internos, control documental, estados de trabajo y toma de decisiones basada en datos.',
+                'tagline' => 'CAE, certificados, seguros y gestión administrativa en un solo lugar.',
+                'description' => 'Plataforma centralizada para la gestión de CAE, certificados, seguros, control documental y procesos administrativos de tu empresa.',
                 'stats' => [
                     ['icon' => 'bi bi-gear', 'value' => 'Optimiza', 'label' => 'Operación diaria'],
                     ['icon' => 'bi bi-shield-check', 'value' => 'Cumple', 'label' => 'Normativa y procesos'],
@@ -104,8 +104,8 @@ final class HomeController
                 'id' => 'actalia',
                 'name' => 'Actalia',
                 'logo' => '/assets/img/logo_actalia.webp',
-                'tagline' => 'Automatiza tus actas y documentos en segundos.',
-                'description' => 'La plataforma de Inteligencia Artificial que revoluciona la gestión de comunidades de propietarios. Tu tiempo, más tuyo.',
+                'tagline' => 'Automatiza actas para tus comunidades de propietarios.',
+                'description' => 'Plataforma de IA que automatiza la creación de actas y documentos para comunidades de propietarios. Tu tiempo, más tuyo.',
                 'stats' => [
                     ['icon' => 'bi bi-stopwatch', 'value' => '95%', 'label' => 'Tiempo ahorrado'],
                     ['icon' => 'bi bi-lightning-charge', 'value' => '5 min', 'label' => 'Para crear un acta'],
@@ -139,18 +139,18 @@ final class HomeController
                 'id' => 'atalaya',
                 'name' => 'Atalaya',
                'logo' => '/assets/img/logo_atalaya.webp',
-                'tagline' => 'Visor y archivo de informes, conectado con Vig-IA.',
-                'description' => 'Atalaya es el visor donde consultas, organizas y almacenas los informes generados por Vig-IA. Centraliza la documentación técnica en un solo lugar, con acceso claro y trazabilidad.',
+                'tagline' => 'Archivo y visor de informes, conectado con VIG-IA.',
+                'description' => 'Atalaya es donde consultas, organizas y almacenas los informes generados por VIG-IA. Centraliza la documentación técnica en un solo lugar, con acceso claro y trazabilidad.',
                 'stats' => [
                     ['icon' => 'bi bi-eye', 'value' => 'Visor', 'label' => 'Informes en un clic'],
                     ['icon' => 'bi bi-archive', 'value' => 'Archivo', 'label' => 'Almacenamiento ordenado'],
-                    ['icon' => 'bi bi-link-45deg', 'value' => 'Vig-IA', 'label' => 'Informes que llegan aqui'],
+                    ['icon' => 'bi bi-link-45deg', 'value' => 'VIG-IA', 'label' => 'Informes que llegan aquí'],
                 ],
                 'features' => [
                     [
                         'icon' => 'bi bi-folder2-open',
                         'title' => 'Consulta centralizada',
-                        'text' => 'Accede a los informes generados por Vig-IA desde un único punto, sin dispersar archivos entre equipos.',
+                        'text' => 'Accede a los informes generados por VIG-IA desde un único punto, sin dispersar archivos entre equipos.',
                     ],
                     [
                         'icon' => 'bi bi-hdd-stack',
@@ -159,8 +159,8 @@ final class HomeController
                     ],
                     [
                         'icon' => 'bi bi-arrow-left-right',
-                        'title' => 'Flujo Vig-IA → Atalaya',
-                        'text' => 'Vig-IA produce el informe; Atalaya lo recibe, guarda y lo muestra listo para revisar o compartir.',
+                        'title' => 'Flujo VIG-IA → Atalaya',
+                        'text' => 'VIG-IA produce el informe; Atalaya lo recibe, guarda y lo muestra listo para revisar o compartir.',
                     ],
                     [
                         'icon' => 'bi bi-shield-check',
@@ -170,7 +170,7 @@ final class HomeController
                 ],
                 'highlights' => [
                     'Visor unificado de informes',
-                    'Integración con generación Vig-IA',
+                    'Integración con generación VIG-IA',
                     'Archivo buscable y ordenado',
                 ],
                 'tags' => ['Informes', 'Visor', 'Archivo'],
@@ -179,8 +179,8 @@ final class HomeController
 
         $about = [
             'logo' => '/assets/img/logo_inpro.webp',
-            'title' => 'Tecnología, integración e innovación para empresas',
-            'text' => 'Desarrollamos herramientas digitales e integraciones tecnológicas para optimizar la gestión y aportar eficiencia real, innovadora y escalable a tu empresa.',
+            'title' => 'Simplificamos el trabajo diario de tu empresa',
+            'text' => 'Diseñamos herramientas que reducen tiempo, errores y carga administrativa.',
         ];
 
         $appName = $this->config['name'] ?? 'INPRO';

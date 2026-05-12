@@ -1,48 +1,58 @@
 <section id="inicio" class="hero">
     <div class="hero-overlay"></div>
-    <div class="hero-neon"></div>
 
     <div class="container hero-content">
-        <div class="hero-intro reveal">
-            <div class="hero-head">
-                <p class="kicker">Tecnología + IA + Integraciones</p>
-                <h1>Soluciones digitales avanzadas para empresas que quieren evolucionar.</h1>
-                <p>
-                    En INPRO transformamos procesos complejos en operaciones claras, medibles y escalables.
-                    Innovación aplicada para resultados reales.
-                </p>
-                <div class="hero-badges">
-                    <span><i class="bi bi-cpu" aria-hidden="true"></i> IA aplicada</span>
-                    <span><i class="bi bi-diagram-3" aria-hidden="true"></i> Integraciones</span>
-                    <span><i class="bi bi-bar-chart-line" aria-hidden="true"></i> Optimización</span>
-                </div>
+        <div class="hero-text reveal">
+            <div class="hero-tag">
+                <span class="hero-tag__icon" aria-hidden="true">&gt;_</span>
+                <code>inpro/soluciones</code>
             </div>
+            <h1>Software a medida para tu empresa.</h1>
+            <p class="hero-sub">
+                Desarrollo, integraciones y automatización. Con IA cuando aporta valor.
+            </p>
+            <a href="#contacto" class="hero-cta">
+                Hablemos de tu proyecto <span aria-hidden="true">→</span>
+            </a>
+        </div>
 
-            <div class="hero-cards">
-                <?php foreach ($projects as $project): ?>
-                    <article class="project-card reveal">
-                        <div class="project-card__top">
-                            <img
-                                class="project-logo"
-                                src="<?= htmlspecialchars($baseUrl . $project['logo'], ENT_QUOTES, 'UTF-8'); ?>"
-                                alt="Logo <?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                                loading="lazy"
-                            />
-                        </div>
+        <div class="hero-visual reveal">
+            <pre class="code-block" id="hero-code"><code><span class="code-line"><span class="code-comment">// Lo que hacemos, resumido</span></span>
+<span class="code-line"><span class="code-keyword">const</span> inpro = {</span>
+<span class="code-line">  stack: [<span class="code-string">'PHP'</span>, <span class="code-string">'JS'</span>, <span class="code-string">'Python'</span>, <span class="code-string">'IA'</span>],</span>
+<span class="code-line">  enfoque: <span class="code-string">'producto'</span>,</span>
+<span class="code-line">  clientes: <span class="code-string">'empresas reales'</span>,</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-method">build</span>(problema) {</span>
+<span class="code-line">    <span class="code-keyword">return</span> solucion.queRealmente(funciona);</span>
+<span class="code-line">  }</span>
+<span class="code-line">};</span></code></pre>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="bento-grid reveal">
+            <?php foreach ($projects as $i => $project): ?>
+                <article class="bento-card bento-card--<?= $i + 1 ?>" >
+                    <div class="bento-card__head">
+                        <img
+                            class="bento-logo"
+                            src="<?= htmlspecialchars($baseUrl . $project['logo'], ENT_QUOTES, 'UTF-8'); ?>"
+                            alt="Logo <?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                            loading="lazy"
+                        />
                         <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                        <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
-
-                        <button
-                            type="button"
-                            class="card-link js-open-project"
-                            data-project="<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
-                        >
-                            Ver más <span class="card-link__arrow" aria-hidden="true">→</span>
-                        </button>
-                    </article>
-                <?php endforeach; ?>
-            </div>
+                    </div>
+                    <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <button
+                        type="button"
+                        class="bento-link js-open-project"
+                        data-project="<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
+                    >
+                        Explorar <span aria-hidden="true">→</span>
+                    </button>
+                </article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -69,7 +79,7 @@
                         loading="lazy"
                     />
                     <div>
-                        <span class="kicker">Proyecto destacado</span>
+                        <span class="kicker">Proyecto</span>
                         <h3 id="title-<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>">
                             <?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?>
                         </h3>
@@ -78,13 +88,11 @@
 
                 <p class="modal-description"><?= htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
                 <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'inpro-hub', 'atalaya'], true)): ?>
-                    <p class="modal-subtitle"><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
-
                     <div class="modal-stats">
                         <?php foreach (($project['stats'] ?? []) as $stat): ?>
                             <div class="modal-stat">
                                 <div class="modal-stat__icon">
-                                    <i class="<?= htmlspecialchars($stat['icon'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></i>
+                                    <i class="<?= htmlspecialchars($stat['icon'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" aria-hidden="true"></i>
                                 </div>
                                 <div class="modal-stat__value"><?= htmlspecialchars($stat['value'] ?? '', ENT_QUOTES, 'UTF-8'); ?></div>
                                 <div class="modal-stat__label"><?= htmlspecialchars($stat['label'] ?? '', ENT_QUOTES, 'UTF-8'); ?></div>
@@ -92,13 +100,13 @@
                         <?php endforeach; ?>
                     </div>
 
-                    <h4 class="modal-section-title">Características Principales</h4>
+                    <h4 class="modal-section-title">Características</h4>
 
                     <div class="modal-features">
                         <?php foreach (($project['features'] ?? []) as $feature): ?>
                             <article class="modal-feature">
                                 <div class="modal-feature__icon">
-                                    <i class="<?= htmlspecialchars($feature['icon'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></i>
+                                    <i class="<?= htmlspecialchars($feature['icon'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" aria-hidden="true"></i>
                                 </div>
                                 <h5><?= htmlspecialchars($feature['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h5>
                                 <p><?= htmlspecialchars($feature['text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>

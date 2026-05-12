@@ -11,7 +11,7 @@ $jsonLd = json_encode([
     'name' => 'INPRO',
     'url' => $this->config['url'] ?? '',
     'logo' => ($baseUrl ?: '') . '/assets/img/logo_inpro.webp',
-    'description' => 'Soluciones digitales avanzadas para empresas. Tecnología, integración e IA.',
+    'description' => 'Software, integraciones e IA aplicada para empresas.',
     'address' => [
         '@type' => 'PostalAddress',
         'streetAddress' => 'Calle Lasaga Larreta, nº7, bajo',
@@ -30,17 +30,20 @@ $jsonLd = json_encode([
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $safeName; ?> | Inteligencia Profesional</title>
-    <meta name="description" content="INPRO desarrolla soluciones tecnológicas e integraciones con foco en eficiencia e IA.">
+    <meta name="description" content="INPRO — Software, integraciones e IA aplicada para empresas.">
     <link rel="canonical" href="<?= $siteUrl; ?>/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:site_name" content="INPRO">
     <meta property="og:title" content="<?= $safeName; ?> | Inteligencia Profesional">
-    <meta property="og:description" content="Soluciones digitales avanzadas para empresas que quieren evolucionar. Tecnología, integración e IA.">
+    <meta property="og:description" content="Software, integraciones e IA aplicada para empresas.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= $siteUrl; ?>/">
     <meta property="og:image" content="<?= $safeBase; ?>/assets/img/og-image.webp">
     <link rel="icon" type="image/x-icon" href="<?= $safeBase; ?>/assets/img/favicon.ico">
     <link rel="apple-touch-icon" href="<?= $safeBase; ?>/assets/img/logo_inpro.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?= $safeBase; ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= $safeBase; ?>/assets/css/responsive.css">

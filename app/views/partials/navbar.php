@@ -23,10 +23,10 @@
         </button>
 
         <ul class="nav-links" id="main-nav" role="list">
-            <li><a href="#inicio">INICIO</a></li>
-            <li><a href="#inpro">INPRO</a></li>
-            <li><a href="#servicios">SERVICIOS</a></li>
-            <li><a href="#contacto">CONTACTO</a></li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#inpro">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 </header>
