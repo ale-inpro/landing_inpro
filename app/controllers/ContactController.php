@@ -10,6 +10,14 @@ use PDOException;
 
 final class ContactController
 {
+    private const MAX_SUBJECT = 150;
+    private const MAX_NAME = 100;
+    private const MAX_EMAIL = 254;
+    private const MAX_PHONE = 20;
+    private const MAX_MESSAGE = 3000;
+    private const RATE_LIMIT_WINDOW = 300; // 5 minutes
+    private const RATE_LIMIT_MAX = 3;
+
     public function __construct(
         private readonly array $config,
         private readonly string $basePath
@@ -19,6 +27,30 @@ final class ContactController
     public function store(): void
     {
         header('Content-Type: application/json; charset=utf-8');
+
+        // CSRF verification
+        $token = $_POST['_token'] ?? '';
+        if (!hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+            http_response_code(403);
+            echo json_encode(['ok' => false, 'message' => 'Token de seguridad inválido. Recarga la página.']);
+            return;
+        }
+
+        // Honeypot: if filled, it's a bot
+        if (!empty($_POST['website'])) {
+            echo json_encode(['ok' => true, 'message' => 'Mensaje guardado y enviado correctamente.']);
+            return;
+        }
+
+        // Rate limiting via session
+        $now = time();
+        $attempts = $_SESSION['contact_attempts'] ?? [];
+        $attempts = array_filter($attempts, fn(int $t) => ($now - $t) < self::RATE_LIMIT_WINDOW);
+        if (count($attempts) >= self::RATE_LIMIT_MAX) {
+            http_response_code(429);
+            echo json_encode(['ok' => false, 'message' => 'Demasiados envíos. Inténtalo de nuevo en unos minutos.']);
+            return;
+        }
 
         $subject = trim($_POST['subject'] ?? '');
         $name = trim($_POST['name'] ?? '');
@@ -32,20 +64,47 @@ final class ContactController
             return;
         }
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Length limits
+        if (mb_strlen($subject) > self::MAX_SUBJECT || mb_strlen($name) > self::MAX_NAME
+            || mb_strlen($email) > self::MAX_EMAIL || mb_strlen($phone) > self::MAX_PHONE
+            || mb_strlen($message) > self::MAX_MESSAGE) {
             http_response_code(422);
-            echo json_encode(['ok' => false, 'message' => 'El email no es valido.']);
+            echo json_encode(['ok' => false, 'message' => 'Uno o más campos exceden la longitud permitida.']);
             return;
         }
 
-        // 1) Guardar en BD
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            http_response_code(422);
+            echo json_encode(['ok' => false, 'message' => 'El email no es válido.']);
+            return;
+        }
+
+        if (!preg_match('/^[+\d\s\-().]{6,20}$/', $phone)) {
+            http_response_code(422);
+            echo json_encode(['ok' => false, 'message' => 'El teléfono no tiene un formato válido.']);
+            return;
+        }
+
+        // Sanitize subject against header injection
+        $subject = str_replace(["\r", "\n", "\0"], '', $subject);
+
+        // Record attempt for rate limiting
+        $attempts[] = $now;
+        $_SESSION['contact_attempts'] = array_values($attempts);
+
         try {
             $this->storeInDatabase($subject, $name, $email, $phone, $message);
         } catch (PDOException $e) {
+            error_log('ContactController DB error: ' . $e->getMessage());
             http_response_code(500);
-            echo json_encode(['ok' => false, 'message' => 'No se pudo guardar el mensaje en base de datos.']);
+            echo json_encode([
+                'ok' => false,
+                'message' => 'No se pudo guardar el mensaje en base de datos.',
+                'newToken' => $_SESSION['csrf_token'],
+            ]);
             return;
         }
+
         $messageForEmail =
               "Asunto: {$subject}\n" .
               "Nombre: {$name}\n" .
@@ -53,30 +112,39 @@ final class ContactController
               "Email: {$email}\n\n" .
               "Mensaje: {$message}";
 
-       // 2) Enviar email con Resend
-       try {
+        try {
             $mailer = new ResendMailer($this->config['mail'] ?? []);
             $mailResult = $mailer->sendContactMail($name, $email, $messageForEmail, $subject, $phone);
         } catch (\Throwable $e) {
+            error_log('ContactController mail error: ' . $e->getMessage());
             http_response_code(500);
             echo json_encode([
                 'ok' => false,
                 'message' => 'Error interno al enviar email (Resend).',
-            ]);
-            return;
-        }
-        
-        if (!$mailResult['ok']) {
-            http_response_code(500);
-            echo json_encode([
-                'ok' => false,
-                'message' => 'Mensaje guardado, pero fallo Resend.',
-                'debug' => $mailResult,
+                'newToken' => $_SESSION['csrf_token'],
             ]);
             return;
         }
 
-        echo json_encode(['ok' => true, 'message' => 'Mensaje guardado y enviado correctamente.']);
+        if (!$mailResult['ok']) {
+            error_log('ContactController Resend failed: ' . json_encode($mailResult));
+            http_response_code(500);
+            echo json_encode([
+                'ok' => false,
+                'message' => 'Mensaje guardado, pero hubo un error al enviar la notificación por email.',
+                'newToken' => $_SESSION['csrf_token'],
+            ]);
+            return;
+        }
+
+        // Regenerate CSRF token only after full success
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+        echo json_encode([
+            'ok' => true,
+            'message' => 'Mensaje guardado y enviado correctamente.',
+            'newToken' => $_SESSION['csrf_token'],
+        ]);
     }
 
     private function storeInDatabase(string $subject, string $name, string $email, string $phone, string $message): void

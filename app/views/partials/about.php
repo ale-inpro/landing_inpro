@@ -5,13 +5,13 @@
             <img
                 class="about-brand__logo"
                 src="<?= htmlspecialchars($baseUrl . $about['logo'], ENT_QUOTES, 'UTF-8'); ?>"
-                alt="Logo InPro"
+                alt="Logo INPRO"
                 loading="lazy"
             />
         </div>
 
         <div class="about-content">
-            <p class="kicker">Sobre InPro</p>
+            <p class="kicker">Sobre INPRO</p>
             <h2><?= htmlspecialchars($about['title'], ENT_QUOTES, 'UTF-8'); ?></h2>
             <p class="lead"><?= htmlspecialchars($about['text'], ENT_QUOTES, 'UTF-8'); ?></p>
 
@@ -22,7 +22,7 @@
                 </article>
                 <article>
                     <strong>Procesos</strong>
-                    <span>Optimizados con tecnologia</span>
+                    <span>Optimizados con tecnología</span>
                 </article>
                 <article>
                     <strong>Valor</strong>

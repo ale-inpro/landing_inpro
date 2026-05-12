@@ -30,10 +30,10 @@ final class ResendMailer
             return ['ok' => false, 'error' => 'Falta RESEND_API_KEY o MAIL_TO'];
         }
 
-        $subjectFromForm = trim($subjectFromForm);
+        $subjectFromForm = str_replace(["\r", "\n", "\0"], '', trim($subjectFromForm));
         $subject = $subjectFromForm !== ''
-            ? sprintf('[InPro] %s', $subjectFromForm)
-            : sprintf('[InPro] Nueva solicitud de contacto - %s', $name);
+            ? sprintf('[INPRO] %s', mb_substr($subjectFromForm, 0, 150))
+            : sprintf('[INPRO] Nueva solicitud de contacto - %s', mb_substr($name, 0, 100));
 
         $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
         $safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
@@ -47,7 +47,7 @@ final class ResendMailer
             <tr>
             <td style="padding:18px 20px;border-bottom:1px solid #233758;background:linear-gradient(90deg,#12203a,#152748);">
                 <h1 style="margin:0;font-size:18px;color:#ffffff;">Nueva solicitud de contacto</h1>
-                <p style="margin:6px 0 0;color:#9fb3d1;font-size:13px;">Landing InPro</p>
+                <p style="margin:6px 0 0;color:#9fb3d1;font-size:13px;">Landing INPRO</p>
             </td>
             </tr>
             <tr>
@@ -64,14 +64,14 @@ final class ResendMailer
             </tr>
             <tr>
             <td style="padding:14px 20px;border-top:1px solid #233758;color:#8ea5c8;font-size:12px;">
-                Este correo se envio automaticamente desde el formulario de contacto de InPro.
+                Este correo se envio automaticamente desde el formulario de contacto de INPRO.
             </td>
             </tr>
         </table>
         </div>
         HTML;
 
-        $text = "InPro - Nueva solicitud de contacto\n\n"
+        $text = "INPRO - Nueva solicitud de contacto\n\n"
             . "Asunto: {$subjectFromForm}\n"
             . "Nombre: {$name}\n"
             . "Teléfono: {$phone}\n"

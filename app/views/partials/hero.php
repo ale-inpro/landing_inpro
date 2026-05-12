@@ -5,16 +5,16 @@
     <div class="container hero-content">
         <div class="hero-intro reveal">
             <div class="hero-head">
-                <p class="kicker">Tecnologia + IA + Integraciones</p>
+                <p class="kicker">Tecnología + IA + Integraciones</p>
                 <h1>Soluciones digitales avanzadas para empresas que quieren evolucionar.</h1>
                 <p>
-                    En InPro transformamos procesos complejos en operaciones claras, medibles y escalables.
-                    Innovacion aplicada para resultados reales.
+                    En INPRO transformamos procesos complejos en operaciones claras, medibles y escalables.
+                    Innovación aplicada para resultados reales.
                 </p>
                 <div class="hero-badges">
-                    <span><i class="bi bi-cpu"></i> IA aplicada</span>
-                    <span><i class="bi bi-diagram-3"></i> Integraciones</span>
-                    <span><i class="bi bi-bar-chart-line"></i> Optimizacion</span>
+                    <span><i class="bi bi-cpu" aria-hidden="true"></i> IA aplicada</span>
+                    <span><i class="bi bi-diagram-3" aria-hidden="true"></i> Integraciones</span>
+                    <span><i class="bi bi-bar-chart-line" aria-hidden="true"></i> Optimización</span>
                 </div>
             </div>
 
@@ -33,13 +33,13 @@
                         <h3><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
                         <p><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
 
-                        <a
-                            href="#"
+                        <button
+                            type="button"
                             class="card-link js-open-project"
                             data-project="<?= htmlspecialchars($project['id'], ENT_QUOTES, 'UTF-8'); ?>"
                         >
-                            Ver mas <span class="card-link__arrow" aria-hidden="true">→</span>
-                        </a>
+                            Ver más <span class="card-link__arrow" aria-hidden="true">→</span>
+                        </button>
                     </article>
                 <?php endforeach; ?>
             </div>
@@ -77,7 +77,7 @@
                 </div>
 
                 <p class="modal-description"><?= htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
-                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'control-empresas', 'inpro-gestion', 'atalaya'], true)): ?>
+                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'inpro-hub', 'atalaya'], true)): ?>
                     <p class="modal-subtitle"><?= htmlspecialchars($project['tagline'], ENT_QUOTES, 'UTF-8'); ?></p>
 
                     <div class="modal-stats">
@@ -114,7 +114,7 @@
 
                     <ul class="modal-list">
                         <?php foreach ($project['highlights'] as $item): ?>
-                            <li><i class="bi bi-check2-circle"></i> <?= htmlspecialchars($item, ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><i class="bi bi-check2-circle" aria-hidden="true"></i> <?= htmlspecialchars($item, ENT_QUOTES, 'UTF-8'); ?></li>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>

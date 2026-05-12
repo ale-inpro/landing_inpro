@@ -1,5 +1,5 @@
 :root {
-    /* Verde corporativo InPro: tono "IN" del logotipo (#6DA398) */
+    /* Verde corporativo INPRO: tono "IN" del logotipo (#6DA398) */
     --inpro-green-r: 109;
     --inpro-green-g: 163;
     --inpro-green-b: 152;
@@ -30,6 +30,41 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+/* SKIP LINK */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 10000;
+    padding: 0.6rem 1.2rem;
+    background: var(--green);
+    color: var(--bg-0);
+    font-weight: 700;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* GLOBAL FOCUS */
+:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+}
+
+/* HONEYPOT */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
 }
 
 body {
@@ -76,15 +111,10 @@ body::before {
     text-transform: uppercase;
     font-size: 0.8rem;
 }
-.contact-panel .kicker {
-    color: var(--green); /* aquí pones el color que quieras */
-  }
-
 .about-content .kicker+h2,
 .section-head .kicker+h2,
 .contact-panel .kicker+h2 {
     color: #ffffff;
-    ;
 }
 
 .service-grid h3 {
@@ -304,19 +334,13 @@ body::before {
 .hero-cards {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-top: 0rem;
     width: 100%;
     align-items: stretch;
 }
 
 @media (max-width: 1100px) {
-    .hero-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 980px) {
     .hero-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -332,7 +356,7 @@ body::before {
     min-width: 0;
 }
 
-/* Escritorios bajos: mismo look del hero, solo escalado */
+/* Short desktops: scale hero down to fit */
 @media (max-height: 820px) and (min-width: 981px) {
     .hero {
         min-height: 100vh;
@@ -351,19 +375,6 @@ body::before {
         gap: 0.3rem;
     }
 
-    .project-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 0.6rem 1.1rem;
-        backdrop-filter: blur(6px);
-        box-shadow: 0 10px 28px rgba(6, 12, 24, 0.45);
-        transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
     .project-card__top {
         margin-bottom: 0.35rem;
     }
@@ -379,24 +390,9 @@ body::before {
     }
 
     .card-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
         margin-top: 0.65rem;
-        border: 0;
-        background: transparent;
-        color: var(--green);
-        font: inherit;
-        font-weight: 700;
-        cursor: pointer;
     }
 }
-
-
-
-
-
-
 
 
 
@@ -729,7 +725,15 @@ body::before {
 .contact-feedback {
     min-height: 1rem;
     font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.contact-feedback--success {
     color: var(--green);
+}
+
+.contact-feedback--error {
+    color: #f87171;
 }
 
 /* REVEAL */
@@ -992,9 +996,6 @@ body.modal-open {
 
 
 
-
-
-
 .footer-grid.footer-grid--3 {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr);
@@ -1080,9 +1081,6 @@ body.modal-open {
     background: rgba(14, 23, 39, 0.5);
     padding: 3px;
 }
-
-
-
 
 
 
@@ -1240,13 +1238,19 @@ body.modal-open {
     .about-stats {
         grid-template-columns: 1fr;
     }
+}
 
-    .footer-grid.footer-grid--3 {
-        grid-template-columns: 1fr;
+@media (max-width: 980px) {
+    body {
+        background-attachment: scroll;
     }
+}
 
-    .footer-grid {
-        flex-direction: column;
-        align-items: flex-start;
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

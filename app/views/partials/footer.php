@@ -1,15 +1,15 @@
 <?php
-$logoUrl = htmlspecialchars($baseUrl . ($about['logo'] ?? '/assets/img/logo_inpro.png'), ENT_QUOTES, 'UTF-8');
+$logoUrl = htmlspecialchars($baseUrl . ($about['logo'] ?? '/assets/img/logo_inpro.webp'), ENT_QUOTES, 'UTF-8');
 ?>
 <footer class="site-footer">
     <div class="container footer-grid footer-grid--3">
         <div class="footer-col footer-col--brand">
             <img
                 src="<?= $logoUrl; ?>"
-                alt="Logo InPro"
+                alt="Logo INPRO"
                 class="footer-logo"
                 width="140"
-                height="auto"
+                height="40"
                 loading="lazy"
             />
             <a class="footer-email" href="mailto:info@inpro.es">info@inpro.es</a>

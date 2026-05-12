@@ -18,7 +18,7 @@ final class HomeController
             [
                 'id' => 'vigia',
                 'name' => 'Vig-IA',
-                'logo' => '/assets/img/logo-vigia.png',
+                'logo' => '/assets/img/logo_vigia.webp',
                 'tagline' => 'Automatiza la gestión de tu empresa técnica con IA.',
                 'description' => 'Vig-IA automatiza la gestión de tu empresa técnica con IA. Genera informes en segundos, no en horas. Gestiona personal, maquinaria y actividades desde un solo lugar.',
                 'stats' => [
@@ -44,17 +44,17 @@ final class HomeController
                     ],
                 ],
                 'highlights' => [
-                    'Deteccion automatica de anomalias',
+                    'Detección automática de anomalías',
                     'Alertas en tiempo real para equipos',
                     'Informes de seguimiento y rendimiento',
                 ],
                 'tags' => ['IA aplicada', 'Monitoreo', 'Alertas'],
             ],
             [
-                'id' => 'inpro-gestion',
-                'name' => 'InPro-Gestion',
-                'logo' => '/assets/img/logo_inpro.png',
-                'tagline' => 'Optimizacion, cumplimiento y valor.',
+                'id' => 'inpro-hub',
+                'name' => 'INPRO HUB',
+                'logo' => '/assets/img/logo_inpro_hub.webp',
+                'tagline' => 'Optimización, cumplimiento y valor.',
                 'description' => 'Plataforma centralizada para procesos internos, control documental, estados de trabajo y toma de decisiones basada en datos.',
                 'stats' => [
                     ['icon' => 'bi bi-gear', 'value' => 'Optimiza', 'label' => 'Operación diaria'],
@@ -96,14 +96,14 @@ final class HomeController
                 'highlights' => [
                     'Control de procesos y tareas',
                     'Trazabilidad documental end-to-end',
-                    'Escalable para distintas areas',
+                    'Escalable para distintas áreas',
                 ],
-                'tags' => ['Gestion', 'Integraciones', 'KPIs'],
+                'tags' => ['Gestión', 'Integraciones', 'KPIs'],
             ],
             [
                 'id' => 'actalia',
                 'name' => 'Actalia',
-                'logo' => '/assets/img/logo_actalia.png',
+                'logo' => '/assets/img/logo_actalia.webp',
                 'tagline' => 'Automatiza tus actas y documentos en segundos.',
                 'description' => 'La plataforma de Inteligencia Artificial que revoluciona la gestión de comunidades de propietarios. Tu tiempo, más tuyo.',
                 'stats' => [
@@ -129,53 +129,18 @@ final class HomeController
                     ],
                 ],
                 'highlights' => [
-                    'Generacion automatica de documentos',
-                    'Asistencia en redaccion y estructura',
-                    'Flujos de revision mas rapidos',
+                    'Generación automática de documentos',
+                    'Asistencia en redacción y estructura',
+                    'Flujos de revisión más rápidos',
                 ],
-                'tags' => ['Documentos', 'Automatizacion', 'Productividad'],
-            ],
-            [
-                'id' => 'control-empresas',
-                'name' => 'Control de Empresas',
-                'logo' => '/assets/img/logo_inpro.png',
-                'tagline' => 'La solución que amplía, conecta y moderniza el software con el que trabaja tu empresa.',
-                'description' => 'Conjunto de herramientas para supervisar indicadores clave, integraciones y operaciones transversales de manera unificada.',
-                'stats' => [
-                    ['icon' => 'bi bi-diagram-3', 'value' => '+Integración', 'label' => 'Sistemas conectados'],
-                    ['icon' => 'bi bi-lightning-charge', 'value' => 'Automatiza', 'label' => 'Procesos internos'],
-                    ['icon' => 'bi bi-speedometer2', 'value' => 'Visión 360°', 'label' => 'Indicadores del negocio'],
-                ],
-                'features' => [
-                    [
-                        'icon' => 'bi bi-puzzle',
-                        'title' => 'Integración sin fricción',
-                        'text' => 'Conecta tus herramientas actuales y centraliza la información sin cambiar tu forma de trabajar.',
-                    ],
-                    [
-                        'icon' => 'bi bi-sliders',
-                        'title' => 'Automatización operativa',
-                        'text' => 'Reduce tareas repetitivas con flujos automáticos, alertas y reportes configurables.',
-                    ],
-                    [
-                        'icon' => 'bi bi-lock',
-                        'title' => 'Seguridad y control',
-                        'text' => 'Permisos por rol, trazabilidad y buenas prácticas para mantener tus datos protegidos.',
-                    ],
-                ],
-                'highlights' => [
-                    'Vision global de indicadores',
-                    'Integracion de sistemas existentes',
-                    'Automatizacion de reportes ejecutivos',
-                ],
-                'tags' => ['Control', 'Operaciones', 'Analitica'],
+                'tags' => ['Documentos', 'Automatización', 'Productividad'],
             ],
             [
                 'id' => 'atalaya',
                 'name' => 'Atalaya',
-               'logo' => '/assets/img/logo_atalaya.png',
+               'logo' => '/assets/img/logo_atalaya.webp',
                 'tagline' => 'Visor y archivo de informes, conectado con Vig-IA.',
-                'description' => 'Atalaya es el visor donde consultas, organizas y almacenas los informes generados por Vig-IA. Centraliza la documentacion tecnica en un solo lugar, con acceso claro y trazabilidad.',
+                'description' => 'Atalaya es el visor donde consultas, organizas y almacenas los informes generados por Vig-IA. Centraliza la documentación técnica en un solo lugar, con acceso claro y trazabilidad.',
                 'stats' => [
                     ['icon' => 'bi bi-eye', 'value' => 'Visor', 'label' => 'Informes en un clic'],
                     ['icon' => 'bi bi-archive', 'value' => 'Archivo', 'label' => 'Almacenamiento ordenado'],
@@ -185,7 +150,7 @@ final class HomeController
                     [
                         'icon' => 'bi bi-folder2-open',
                         'title' => 'Consulta centralizada',
-                        'text' => 'Accede a los informes generados por Vig-IA desde un unico punto, sin dispersar archivos entre equipos.',
+                        'text' => 'Accede a los informes generados por Vig-IA desde un único punto, sin dispersar archivos entre equipos.',
                     ],
                     [
                         'icon' => 'bi bi-hdd-stack',
@@ -200,12 +165,12 @@ final class HomeController
                     [
                         'icon' => 'bi bi-shield-check',
                         'title' => 'Control de acceso',
-                        'text' => 'Quien ve que informe queda acotado a tu organizacion y a los permisos que definas.',
+                        'text' => 'Quién ve qué informe queda acotado a tu organización y a los permisos que definas.',
                     ],
                 ],
                 'highlights' => [
                     'Visor unificado de informes',
-                    'Integracion con generacion Vig-IA',
+                    'Integración con generación Vig-IA',
                     'Archivo buscable y ordenado',
                 ],
                 'tags' => ['Informes', 'Visor', 'Archivo'],
@@ -213,12 +178,12 @@ final class HomeController
         ];
 
         $about = [
-            'logo' => '/assets/img/logo_inpro.png',
-            'title' => 'Tecnologia, integracion e innovacion para empresas',
-            'text' => 'Desarrollamos herramientas digitales e integraciones tecnologicas para optimizar la gestion y aportar eficiencia real, innovadora y escalable a tu empresa.',
+            'logo' => '/assets/img/logo_inpro.webp',
+            'title' => 'Tecnología, integración e innovación para empresas',
+            'text' => 'Desarrollamos herramientas digitales e integraciones tecnológicas para optimizar la gestión y aportar eficiencia real, innovadora y escalable a tu empresa.',
         ];
 
-        $appName = $this->config['name'] ?? 'InPro';
+        $appName = $this->config['name'] ?? 'INPRO';
         $baseUrl = $this->basePath === '' ? '' : $this->basePath;
 
         require dirname(__DIR__) . '/views/home.php';

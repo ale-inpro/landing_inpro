@@ -13,11 +13,17 @@ const modalsWrapper = document.getElementById('project-modals');
 let lastFocusedElement = null;
 
 menuToggle?.addEventListener('click', () => {
-    navMenu?.classList.toggle('open');
+    const isOpen = navMenu?.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(!!isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
 });
 
 navLinks.forEach((link) => {
-    link.addEventListener('click', () => navMenu?.classList.remove('open'));
+    link.addEventListener('click', () => {
+        navMenu?.classList.remove('open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        menuToggle?.setAttribute('aria-label', 'Abrir menú');
+    });
 });
 
 const navObserver = new IntersectionObserver(
@@ -49,14 +55,43 @@ const revealObserver = new IntersectionObserver(
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
+// --- Modal focus trap ---
+const FOCUSABLE = 'a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])';
+
+function trapFocus(event, container) {
+    const focusable = [...container.querySelectorAll(FOCUSABLE)];
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+    }
+}
+
 function closeAllModals() {
     modals.forEach((modal) => modal.classList.remove('is-open'));
     document.body.classList.remove('modal-open');
     modalsWrapper?.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', handleModalKeydown);
 
     if (lastFocusedElement instanceof HTMLElement) {
         lastFocusedElement.focus();
         lastFocusedElement = null;
+    }
+}
+
+function handleModalKeydown(event) {
+    if (event.key === 'Escape') {
+        closeAllModals();
+        return;
+    }
+    if (event.key === 'Tab') {
+        const openModal = document.querySelector('.project-modal.is-open .project-modal__panel');
+        if (openModal) trapFocus(event, openModal);
     }
 }
 
@@ -73,6 +108,8 @@ openButtons.forEach((button) => {
         document.body.classList.add('modal-open');
         modalsWrapper?.setAttribute('aria-hidden', 'false');
 
+        document.addEventListener('keydown', handleModalKeydown);
+
         const panel = targetModal.querySelector('.project-modal__panel');
         if (panel instanceof HTMLElement) {
             panel.focus();
@@ -84,13 +121,21 @@ closeModalButtons.forEach((button) => {
     button.addEventListener('click', closeAllModals);
 });
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeAllModals();
-});
-
+// --- Contact form ---
 contactForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
-    contactFeedback.textContent = 'Enviando mensaje...';
+
+    if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+    }
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+    if (contactFeedback) {
+        contactFeedback.textContent = 'Enviando mensaje...';
+        contactFeedback.className = 'contact-feedback';
+    }
 
     const formData = new FormData(contactForm);
 
@@ -99,28 +144,43 @@ contactForm?.addEventListener('submit', async (event) => {
             method: 'POST',
             body: formData,
         });
-        
+
         const contentType = response.headers.get('content-type') || '';
         let data;
 
         if (contentType.includes('application/json')) {
             data = await response.json();
         } else {
-            const raw = await response.text();
-            throw new Error(`Respuesta no JSON del servidor: ${raw.slice(0, 120)}`);
+            throw new Error('Error al procesar la respuesta del servidor.');
+        }
+
+        // Always refresh CSRF token if server provides one
+        if (data.newToken) {
+            const tokenInput = contactForm.querySelector('input[name="_token"]');
+            if (tokenInput) tokenInput.value = data.newToken;
         }
 
         if (!response.ok || !data.ok) {
-            throw new Error(
-                data.debug
-                  ? `${data.message} | ${JSON.stringify(data.debug)}`
-                  : (data.message || 'Error al enviar el formulario')
-              );
+            throw new Error(data.message || 'Error al enviar el formulario.');
         }
 
-        contactFeedback.textContent = data.message;
+        if (contactFeedback) {
+            contactFeedback.textContent = data.message;
+            contactFeedback.classList.add('contact-feedback--success');
+        }
         contactForm.reset();
+
+        // Restore token in the reset form
+        if (data.newToken) {
+            const tokenInput = contactForm.querySelector('input[name="_token"]');
+            if (tokenInput) tokenInput.value = data.newToken;
+        }
     } catch (error) {
-        contactFeedback.textContent = error.message || 'No se pudo enviar el mensaje.';
+        if (contactFeedback) {
+            contactFeedback.textContent = error.message || 'No se pudo enviar el mensaje.';
+            contactFeedback.classList.add('contact-feedback--error');
+        }
+    } finally {
+        if (submitBtn) submitBtn.disabled = false;
     }
 });
