@@ -30,7 +30,7 @@ final class HomeController
                     [
                         'icon' => 'bi bi-stars',
                         'title' => 'Asistencia técnica inteligente',
-                        'text' => 'Resuelve incidencias y consultas en segundos gracias a un motor de IA entrenado para soporte técnico.',
+                        'text' => 'Resuelve incidencias y consultas en segundos con IA entrenada para soporte técnico.',
                     ],
                     [
                         'icon' => 'bi bi-lightning-charge',
@@ -55,7 +55,7 @@ final class HomeController
                 'name' => 'INPRO HUB',
                 'logo' => '/assets/img/logo_inpro_hub.webp',
                 'tagline' => 'CAE, certificados, seguros y gestión administrativa en un solo lugar.',
-                'description' => 'Plataforma centralizada para la gestión de CAE, certificados, seguros, control documental y procesos administrativos de tu empresa.',
+                'description' => 'Gestión centralizada de CAE, certificados, seguros, control documental y procesos administrativos de tu empresa.',
                 'stats' => [
                     ['icon' => 'bi bi-gear', 'value' => 'Optimiza', 'label' => 'Operación diaria'],
                     ['icon' => 'bi bi-shield-check', 'value' => 'Cumple', 'label' => 'Normativa y procesos'],
@@ -70,27 +70,12 @@ final class HomeController
                     [
                         'icon' => 'bi bi-buildings',
                         'title' => 'Gestión digital',
-                        'text' => 'Plataforma de comunidades y certificados para operar de forma centralizada.',
+                        'text' => 'Gestión de comunidades y certificados en un único punto.',
                     ],
                     [
                         'icon' => 'bi bi-patch-check',
                         'title' => 'Certificados & CAE',
                         'text' => 'Gestión integrada de certificados digitales y CAE en un solo lugar.',
-                    ],
-                    [
-                        'icon' => 'bi bi-shield-exclamation',
-                        'title' => 'Información RGPD',
-                        'text' => 'Garantiza el cumplimiento normativo en productos y tratamiento de datos.',
-                    ],
-                    [
-                        'icon' => 'bi bi-cash-coin',
-                        'title' => 'Control de costes',
-                        'text' => 'Soluciones para optimizar recursos y reducir costes de forma continua.',
-                    ],
-                    [
-                        'icon' => 'bi bi-headset',
-                        'title' => 'Soporte al cliente',
-                        'text' => 'Asesoramiento real para acompañarte en la implantación y el uso.',
                     ],
                 ],
                 'highlights' => [
@@ -102,10 +87,10 @@ final class HomeController
             ],
             [
                 'id' => 'actalia',
-                'name' => 'Actalia',
+                'name' => 'ACTALIA',
                 'logo' => '/assets/img/logo_actalia.webp',
                 'tagline' => 'Automatiza actas para tus comunidades de propietarios.',
-                'description' => 'Plataforma de IA que automatiza la creación de actas y documentos para comunidades de propietarios. Tu tiempo, más tuyo.',
+                'description' => 'Software que automatiza la creación de actas y documentos para comunidades de propietarios, usando IA para agilizar el proceso.',
                 'stats' => [
                     ['icon' => 'bi bi-stopwatch', 'value' => '95%', 'label' => 'Tiempo ahorrado'],
                     ['icon' => 'bi bi-lightning-charge', 'value' => '5 min', 'label' => 'Para crear un acta'],
@@ -114,8 +99,8 @@ final class HomeController
                 'features' => [
                     [
                         'icon' => 'bi bi-mic',
-                        'title' => 'IA Conversacional',
-                        'text' => 'Crea documentos hablando naturalmente. Sin formularios, sin complicaciones.',
+                        'title' => 'Entrada por voz',
+                        'text' => 'Dicta el contenido del acta y el sistema lo estructura automáticamente.',
                     ],
                     [
                         'icon' => 'bi bi-whatsapp',
@@ -123,9 +108,9 @@ final class HomeController
                         'text' => 'Comunícate con todos los vecinos al instante desde un solo lugar.',
                     ],
                     [
-                        'icon' => 'bi bi-check2-shield',
-                        'title' => 'Cero Errores',
-                        'text' => 'La IA valida fechas, horas y coherencia por ti antes de generar el documento.',
+                        'icon' => 'bi bi-shield-check',
+                        'title' => 'Validación automática',
+                        'text' => 'Comprueba fechas, horas y coherencia antes de generar el documento.',
                     ],
                 ],
                 'highlights' => [
@@ -136,11 +121,11 @@ final class HomeController
                 'tags' => ['Documentos', 'Automatización', 'Productividad'],
             ],
             [
-                'id' => 'atalaya',
-                'name' => 'Atalaya',
-               'logo' => '/assets/img/logo_atalaya.webp',
+                'id' => 'atalaia',
+                'name' => 'ATALAIA',
+                'logo' => '/assets/img/logo_atalaia.webp',
                 'tagline' => 'Archivo y visor de informes, conectado con VIG-IA.',
-                'description' => 'Atalaya es donde consultas, organizas y almacenas los informes generados por VIG-IA. Centraliza la documentación técnica en un solo lugar, con acceso claro y trazabilidad.',
+                'description' => 'ATALAIA es donde consultas, organizas y almacenas los informes generados por VIG-IA. Centraliza la documentación técnica en un solo lugar, con acceso claro y trazabilidad.',
                 'stats' => [
                     ['icon' => 'bi bi-eye', 'value' => 'Visor', 'label' => 'Informes en un clic'],
                     ['icon' => 'bi bi-archive', 'value' => 'Archivo', 'label' => 'Almacenamiento ordenado'],
@@ -158,11 +143,6 @@ final class HomeController
                         'text' => 'Mantén el historial de informes organizado y disponible cuando lo necesites.',
                     ],
                     [
-                        'icon' => 'bi bi-arrow-left-right',
-                        'title' => 'Flujo VIG-IA → Atalaya',
-                        'text' => 'VIG-IA produce el informe; Atalaya lo recibe, guarda y lo muestra listo para revisar o compartir.',
-                    ],
-                    [
                         'icon' => 'bi bi-shield-check',
                         'title' => 'Control de acceso',
                         'text' => 'Quién ve qué informe queda acotado a tu organización y a los permisos que definas.',
@@ -170,7 +150,7 @@ final class HomeController
                 ],
                 'highlights' => [
                     'Visor unificado de informes',
-                    'Integración con generación VIG-IA',
+                    'Integración con VIG-IA',
                     'Archivo buscable y ordenado',
                 ],
                 'tags' => ['Informes', 'Visor', 'Archivo'],

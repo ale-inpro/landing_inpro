@@ -19,9 +19,13 @@
         <div class="hero-visual reveal">
             <pre class="code-block" id="hero-code"><code><span class="code-line"><span class="code-comment">// Lo que hacemos, resumido</span></span>
 <span class="code-line"><span class="code-keyword">const</span> inpro = {</span>
-<span class="code-line">  stack: [<span class="code-string">'PHP'</span>, <span class="code-string">'JS'</span>, <span class="code-string">'Python'</span>, <span class="code-string">'IA'</span>],</span>
+<span class="code-line">  <span class="code-comment">// nos adaptamos a cualquier stack</span></span>
+<span class="code-line">  stack: [<span class="code-string">'IA'</span>, <span class="code-string">'PHP'</span>, <span class="code-string">'Python'</span>, <span class="code-string">'React'</span>, <span class="code-string">'TypeScript'</span>,</span>
+<span class="code-line">    <span class="code-string">'Node'</span>, <span class="code-string">'SQL'</span>, <span class="code-string">'Docker'</span>, <span class="code-string">'REST'</span>],</span>
+<span class="code-line">  <span class="code-comment">// software propio, no reventas</span></span>
 <span class="code-line">  enfoque: <span class="code-string">'producto'</span>,</span>
-<span class="code-line">  clientes: <span class="code-string">'empresas reales'</span>,</span>
+<span class="code-line">  <span class="code-comment">// de pymes a grandes cuentas</span></span>
+<span class="code-line">  clientes: <span class="code-string">'tu empresa'</span>,</span>
 <span class="code-line"></span>
 <span class="code-line">  <span class="code-method">build</span>(problema) {</span>
 <span class="code-line">    <span class="code-keyword">return</span> solucion.queRealmente(funciona);</span>
@@ -87,7 +91,7 @@
                 </div>
 
                 <p class="modal-description"><?= htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
-                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'inpro-hub', 'atalaya'], true)): ?>
+                <?php if (in_array(($project['id'] ?? ''), ['actalia', 'vigia', 'inpro-hub', 'atalaia'], true)): ?>
                     <div class="modal-stats">
                         <?php foreach (($project['stats'] ?? []) as $stat): ?>
                             <div class="modal-stat">

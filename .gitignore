@@ -1,6 +1,8 @@
 /vendor/
 /.env
+/.deploy-config
 /storage/logs/*.log
 /.idea/
 /.vscode/
+/.cursor/
 Thumbs.db

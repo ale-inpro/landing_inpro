@@ -1,0 +1,7 @@
+SSH_HOST="tu-servidor.hostinger.com"
+SSH_USER="u123456789"
+SSH_PORT=65002
+REMOTE_PATH="/home/u123456789/public_html"
+
+
+inpro_main
