@@ -1,19 +1,41 @@
 <section id="inicio" class="hero">
     <div class="hero-overlay"></div>
 
-    <div class="container hero-content hero-content--centered">
+    <div class="container hero-content">
         <div class="hero-text reveal">
             <div class="hero-tag">
                 <span class="hero-tag__icon" aria-hidden="true">&gt;_</span>
                 <code>inpro/soluciones</code>
             </div>
-            <h1>Software a medida<br>para tu empresa.</h1>
+            <h1>Software a medida para tu empresa.</h1>
             <p class="hero-sub">
                 Desarrollo, integraciones y automatización a medida.
             </p>
             <a href="#contacto" class="hero-cta">
                 Hablemos de tu proyecto <span aria-hidden="true">→</span>
             </a>
+        </div>
+
+        <div class="hero-visual reveal">
+            <div class="srv-panel" id="hero-srv">
+                <div class="srv-panel__bar">
+                    <span class="srv-panel__led srv-panel__led--on" aria-hidden="true"></span>
+                    <span class="srv-panel__title">INPRO · servicios</span>
+                    <span class="srv-panel__uptime">uptime 99.9%</span>
+                </div>
+                <div class="srv-panel__body">
+                    <div class="srv-row"><span class="srv-led" aria-hidden="true"></span><span class="srv-row__name">Desarrollo</span><span class="srv-row__status">running</span></div>
+                    <div class="srv-row"><span class="srv-led" aria-hidden="true"></span><span class="srv-row__name">Integraciones</span><span class="srv-row__status">running</span></div>
+                    <div class="srv-row"><span class="srv-led" aria-hidden="true"></span><span class="srv-row__name">IA aplicada</span><span class="srv-row__status">running</span></div>
+                    <div class="srv-row"><span class="srv-led" aria-hidden="true"></span><span class="srv-row__name">Automatización</span><span class="srv-row__status">running</span></div>
+                    <div class="srv-row"><span class="srv-led" aria-hidden="true"></span><span class="srv-row__name">Optimización</span><span class="srv-row__status">running</span></div>
+                    <div class="srv-row"><span class="srv-led" aria-hidden="true"></span><span class="srv-row__name">Soporte</span><span class="srv-row__status">running</span></div>
+                </div>
+                <div class="srv-panel__footer">
+                    <span>6 activos</span>
+                    <span>0 incidencias</span>
+                </div>
+            </div>
         </div>
     </div>
 

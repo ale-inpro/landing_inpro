@@ -10,6 +10,7 @@ const modals = document.querySelectorAll('.project-modal');
 const closeModalButtons = document.querySelectorAll('.js-close-modal');
 const revealItems = document.querySelectorAll('.reveal');
 const modalsWrapper = document.getElementById('project-modals');
+const heroSrv = document.getElementById('hero-srv');
 let lastFocusedElement = null;
 
 menuToggle?.addEventListener('click', () => {
@@ -54,6 +55,30 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+// --- Server panel staggered reveal ---
+if (heroSrv) {
+    const rows = heroSrv.querySelectorAll('.srv-row');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+        heroSrv.classList.add('is-visible');
+    } else {
+        const srvObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                rows.forEach((row, i) => {
+                    row.style.transitionDelay = `${i * 150}ms`;
+                });
+                const footer = heroSrv.querySelector('.srv-panel__footer');
+                if (footer) footer.style.transitionDelay = `${rows.length * 150 + 200}ms`;
+                heroSrv.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            });
+        }, { threshold: 0.3 });
+        srvObserver.observe(heroSrv);
+    }
+}
 
 // --- Modal focus trap ---
 const FOCUSABLE = 'a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])';
