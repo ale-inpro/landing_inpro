@@ -1,36 +1,19 @@
 <section id="inicio" class="hero">
     <div class="hero-overlay"></div>
 
-    <div class="container hero-content">
+    <div class="container hero-content hero-content--centered">
         <div class="hero-text reveal">
             <div class="hero-tag">
                 <span class="hero-tag__icon" aria-hidden="true">&gt;_</span>
                 <code>inpro/soluciones</code>
             </div>
-            <h1>Software a medida para tu empresa.</h1>
+            <h1>Software a medida<br>para tu empresa.</h1>
             <p class="hero-sub">
-                Desarrollo, integraciones y automatización. Con IA cuando aporta valor.
+                Desarrollo, integraciones y automatización a medida.
             </p>
             <a href="#contacto" class="hero-cta">
                 Hablemos de tu proyecto <span aria-hidden="true">→</span>
             </a>
-        </div>
-
-        <div class="hero-visual reveal">
-            <pre class="code-block" id="hero-code"><code><span class="code-line"><span class="code-comment">// Lo que hacemos, resumido</span></span>
-<span class="code-line"><span class="code-keyword">const</span> inpro = {</span>
-<span class="code-line">  <span class="code-comment">// nos adaptamos a cualquier stack</span></span>
-<span class="code-line">  stack: [<span class="code-string">'IA'</span>, <span class="code-string">'PHP'</span>, <span class="code-string">'Python'</span>, <span class="code-string">'React'</span>, <span class="code-string">'TypeScript'</span>,</span>
-<span class="code-line">    <span class="code-string">'Node'</span>, <span class="code-string">'SQL'</span>, <span class="code-string">'Docker'</span>, <span class="code-string">'REST'</span>],</span>
-<span class="code-line">  <span class="code-comment">// software propio, no reventas</span></span>
-<span class="code-line">  enfoque: <span class="code-string">'producto'</span>,</span>
-<span class="code-line">  <span class="code-comment">// de pymes a grandes cuentas</span></span>
-<span class="code-line">  clientes: <span class="code-string">'tu empresa'</span>,</span>
-<span class="code-line"></span>
-<span class="code-line">  <span class="code-method">build</span>(problema) {</span>
-<span class="code-line">    <span class="code-keyword">return</span> solucion.queRealmente(funciona);</span>
-<span class="code-line">  }</span>
-<span class="code-line">};</span></code></pre>
         </div>
     </div>
 

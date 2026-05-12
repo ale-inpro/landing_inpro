@@ -10,7 +10,6 @@ const modals = document.querySelectorAll('.project-modal');
 const closeModalButtons = document.querySelectorAll('.js-close-modal');
 const revealItems = document.querySelectorAll('.reveal');
 const modalsWrapper = document.getElementById('project-modals');
-const heroCode = document.getElementById('hero-code');
 let lastFocusedElement = null;
 
 menuToggle?.addEventListener('click', () => {
@@ -122,35 +121,6 @@ closeModalButtons.forEach((button) => {
     button.addEventListener('click', closeAllModals);
 });
 
-// --- Code block staggered reveal ---
-if (heroCode) {
-    const lines = heroCode.querySelectorAll('.code-line');
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (prefersReduced) {
-        heroCode.classList.add('is-typed');
-    } else {
-        const codeObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                heroCode.classList.add('is-typed');
-                lines.forEach((line, i) => {
-                    line.style.transitionDelay = `${i * 80}ms`;
-                });
-                const lastLine = lines[lines.length - 1];
-                if (lastLine) {
-                    const cursor = document.createElement('span');
-                    cursor.className = 'code-cursor';
-                    cursor.setAttribute('aria-hidden', 'true');
-                    const totalDelay = lines.length * 80 + 350;
-                    setTimeout(() => lastLine.appendChild(cursor), totalDelay);
-                }
-                obs.unobserve(entry.target);
-            });
-        }, { threshold: 0.3 });
-        codeObserver.observe(heroCode);
-    }
-}
 
 // --- Contact form ---
 contactForm?.addEventListener('submit', async (event) => {
